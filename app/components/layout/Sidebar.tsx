@@ -369,7 +369,7 @@ export default function Sidebar() {
             {isOpen && (
               <div className="flex-1 min-w-0">
                 <p className="text-xs truncate" style={{ color: "#94a3b8" }}>
-                  nourryahyaoui@gmail.com
+                  pthanksdev@gmail.com
                 </p>
               </div>
             )}
