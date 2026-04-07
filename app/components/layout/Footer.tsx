@@ -20,7 +20,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <motion.footer 
+    <motion.footer
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, delay: 0.2 }}
@@ -28,17 +28,17 @@ export default function Footer() {
     >
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          
+
           {/* Left section - Brand */}
           <div className="flex items-center gap-3">
-            <div 
+            <div
               className="w-8 h-8 rounded-lg flex items-center justify-center"
               style={{ backgroundColor: '#c5e6ff' }}
             >
               <span className="text-sm font-bold text-black">D</span>
             </div>
             <span className="text-sm font-semibold text-gray-900">
-              DEVDASH
+              Stackly
             </span>
             <span className="text-xs text-gray-400 hidden sm:inline">|</span>
             <span className="text-xs text-gray-500 hidden sm:inline">
@@ -54,7 +54,7 @@ export default function Footer() {
               <span className="text-gray-600">by</span>
               <span className="font-semibold text-gray-900">Nour Yahyaoui</span>
             </div>
-            
+
             <div className="flex items-center gap-4 text-xs">
               {/* Date */}
               <div className="flex items-center gap-1.5 text-gray-500">
@@ -63,8 +63,8 @@ export default function Footer() {
               </div>
 
               {/* GitHub */}
-              <Link 
-                href="https://github.com/nour-yahyaoui" 
+              <Link
+                href="https://github.com/nour-yahyaoui"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 text-gray-500 hover:text-black transition-colors group"

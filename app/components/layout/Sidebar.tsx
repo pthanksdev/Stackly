@@ -255,7 +255,7 @@ export default function Sidebar() {
               >
                 <FiCode size={20} color="#000" />
               </div>
-              <span className="font-semibold text-lg">DevDash</span>
+              <span className="font-semibold text-lg">Stackly</span>
             </div>
           ) : (
             <div />

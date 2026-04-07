@@ -61,7 +61,7 @@ export default function Header({ title, showBackButton = true }: HeaderProps) {
               className="w-8 h-8 rounded-full flex items-center justify-center"
               style={{ backgroundColor: '#ffb7c5' }}
             >
-              <span className="text-sm font-bold text-black">NY</span>
+              <span className="text-sm font-bold text-black">PT</span>
             </div>
           </div>
         </div>
