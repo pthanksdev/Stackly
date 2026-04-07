@@ -1,19 +1,19 @@
-# DEVDAH PROJECT - COMPLETE ARCHITECTURE & PATTERNS
+# STACKLY PROJECT - COMPLETE ARCHITECTURE & PATTERNS
 
 ```
-██████╗ ███████╗██╗   ██╗██████╗  █████╗ ██╗  ██╗
-██╔══██╗██╔════╝██║   ██║██╔══██╗██╔══██╗██║  ██║
-██║  ██║█████╗  ██║   ██║██║  ██║███████║███████║
-██║  ██║██╔══╝  ╚██╗ ██╔╝██║  ██║██╔══██║██╔══██║
-██████╔╝███████╗ ╚████╔╝ ██████╔╝██║  ██║██║  ██║
-╚═════╝ ╚══════╝  ╚═══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+███████╗████████╗ █████╗  ██████╗██╗  ██╗██╗  ██╗   ██╗
+██╔════╝╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝██║  ╚██╗ ██╔╝
+███████╗   ██║   ███████║██║     █████╔╝ ██║   ╚████╔╝ 
+╚════██║   ██║   ██╔══██║██║     ██╔═██╗ ██║    ╚██╔╝  
+███████║   ██║   ██║  ██║╚██████╗██║  ██╗███████╗██║   
+╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝   
 ```
 **Developer Dashboard** - A Modern Next.js 14 Application with TypeScript, Tailwind, and Framer Motion
 
-**Created by:** Nour Yahyaoui
-**GitHub:** nour-yahyaoui
-**Phone:** 25739896
-**Version:** 1.0.1
+**Created by:** pthanksdev
+**GitHub:** pthanksdev
+**Phone:** +234-911-749-2061
+**Version:** 1.0.0
 
 ---
 
@@ -653,6 +653,6 @@ Then do exactly that.
 
 ---
 
-*This document was last updated to reflect the complete architecture of the DEVDAH project. Follow it religiously. No exceptions.*
+*This document was last updated to reflect the complete architecture of the Stackly project. Follow it religiously. No exceptions.*
 
-**DEVDAH v1.0.0** - Built by Nour Yahyaoui - 25739896 - github.com/nour-yahyaoui
+**Stackly v1.0.0** - Built by pthanksdev - +234-911-749-2061 - github.com/pthanksdev
