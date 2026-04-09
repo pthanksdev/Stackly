@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import Footer from './Footer';
+import CommandPalette from '../ui/CommandPalette';
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -38,6 +39,7 @@ export default function DashboardLayout({
 
         <Footer />
       </div>
+      <CommandPalette />
     </div>
   );
 }
