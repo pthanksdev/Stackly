@@ -1,9 +1,9 @@
 'use client';
 
-import { motion, MotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FiCopy, FiHeart, FiStar } from 'react-icons/fi';
-import { ColorPalette } from '../components/data/themes';
-import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useState } from 'react';
+import { ColorPalette } from '../data/themes';
+import { Key, useState } from 'react';
 
 interface ThemeCardProps {
   theme: ColorPalette;
@@ -88,7 +88,7 @@ const copyToClipboard = (color: string) => {
 
         {/* Color Codes */}
         <div className="flex flex-wrap gap-2 mb-4">
-          {theme.colors.map((color: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | MotionValue<number> | MotionValue<string> | null | undefined, i: Key | null | undefined) => (
+          {theme.colors.map((color: string, i: Key | null | undefined) => (
             <motion.button
               key={i}
               whileTap={{ scale: 0.95 }}
