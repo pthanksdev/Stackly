@@ -80,9 +80,9 @@ export default function HtmlLessonCard({
         </div>
       </div>
 
-      {/* Code card */}
+      {/* Code and Preview card */}
       <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
-        <div className="grid grid-cols-1 gap-4 p-5 mx-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-5 mx-5">
           <div className="space-y-3">
             <div className="flex items-center gap-1.5">
               <div className="p-1 bg-slate-100 rounded-lg">
@@ -119,6 +119,27 @@ export default function HtmlLessonCard({
                 <><FiCopy size={14} /> Copy Code</>
               )}
             </motion.button>
+          </div>
+
+          {/* Preview column */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-1.5">
+              <div className="p-1 bg-slate-100 rounded-lg">
+                <FiCode className="text-slate-600" size={14} />
+              </div>
+              <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider">
+                Live Preview
+              </h3>
+            </div>
+
+            <div className="bg-white border rounded-lg overflow-hidden h-[200px]">
+              <iframe
+                title={`Preview ${lesson.id}`}
+                className="w-full h-full"
+                srcDoc={`<!DOCTYPE html><html><head><style>body { font-family: system-ui, sans-serif; padding: 1rem; }</style></head><body>${lesson.example}</body></html>`}
+                sandbox="allow-scripts"
+              />
+            </div>
           </div>
         </div>
       </div>

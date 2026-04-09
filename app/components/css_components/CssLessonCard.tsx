@@ -84,55 +84,78 @@ export default function CssLessonCard({
         </div>
       </div>
 
-      {/* Code card */}
+      {/* Code and Preview card */}
       <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
-        <div className="p-5">
-          <div className="flex items-center justify-between mb-3">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-5 mx-5">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-1.5">
+                <div className="p-1 bg-slate-100 rounded-lg">
+                  <FiCode className="text-slate-600" size={14} />
+                </div>
+                <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider">
+                  CSS Code
+                </h3>
+              </div>
+              <span className="text-[10px] px-2 py-0.5 bg-slate-100 rounded-full font-mono">
+                {lesson.category}
+              </span>
+            </div>
+
+            <div className="bg-gray-900 rounded-lg p-4 font-mono text-xs md:text-sm overflow-x-auto max-h-[300px] overflow-y-auto">
+              <pre className="text-gray-100 whitespace-pre-wrap">
+                <code>{lesson.example}</code>
+              </pre>
+            </div>
+
+            <div className="mt-4 flex items-center justify-between">
+              <div className="flex flex-wrap gap-1 items-center">
+                <span className="text-[10px] font-mono text-slate-500">Properties:</span>
+                {lesson.preview.properties.map((prop, idx) => (
+                  <span
+                    key={idx}
+                    className="text-[10px] px-2 py-0.5 bg-white border border-gray-300 rounded-full text-gray-700 font-mono"
+                  >
+                    {prop}
+                  </span>
+                ))}
+              </div>
+
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => onCopy(lesson.example, lesson.id)}
+                className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium transition-all"
+                style={{ backgroundColor: lesson.color, color: '#0a0a0a' }}
+              >
+                {copiedId === lesson.id ? (
+                  <><FiCheck size={14} /> Copied!</>
+                ) : (
+                  <><FiCopy size={14} /> Copy CSS</>
+                )}
+              </motion.button>
+            </div>
+          </div>
+
+          {/* Preview column */}
+          <div className="space-y-3">
             <div className="flex items-center gap-1.5">
               <div className="p-1 bg-slate-100 rounded-lg">
                 <FiCode className="text-slate-600" size={14} />
               </div>
               <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider">
-                CSS Code
+                Live Preview
               </h3>
             </div>
-            <span className="text-[10px] px-2 py-0.5 bg-slate-100 rounded-full font-mono">
-              {lesson.category}
-            </span>
-          </div>
 
-          <div className="bg-gray-900 rounded-lg p-4 font-mono text-xs md:text-sm overflow-x-auto max-h-[300px] overflow-y-auto">
-            <pre className="text-gray-100 whitespace-pre-wrap">
-              <code>{lesson.example}</code>
-            </pre>
-          </div>
-
-          <div className="mt-4 flex items-center justify-between">
-            <div className="flex flex-wrap gap-1 items-center">
-              <span className="text-[10px] font-mono text-slate-500">Properties:</span>
-              {lesson.preview.properties.map((prop, idx) => (
-                <span
-                  key={idx}
-                  className="text-[10px] px-2 py-0.5 bg-white border border-gray-300 rounded-full text-gray-700 font-mono"
-                >
-                  {prop}
-                </span>
-              ))}
+            <div className="bg-white border rounded-lg overflow-hidden h-full min-h-[250px]">
+              <iframe
+                title={`Preview ${lesson.id}`}
+                className="w-full h-full"
+                srcDoc={`<!DOCTYPE html><html><head></head><body style="margin: 0; padding: 1rem; font-family: system-ui, sans-serif; display: flex; align-items: flex-start; justify-content: flex-start; gap: 1rem; flex-wrap: wrap;">${lesson.example.includes('<style>') ? lesson.example : `<style>${lesson.example}</style>`}</body></html>`}
+                sandbox="allow-scripts"
+              />
             </div>
-
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => onCopy(lesson.example, lesson.id)}
-              className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium transition-all"
-              style={{ backgroundColor: lesson.color, color: '#0a0a0a' }}
-            >
-              {copiedId === lesson.id ? (
-                <><FiCheck size={14} /> Copied!</>
-              ) : (
-                <><FiCopy size={14} /> Copy CSS</>
-              )}
-            </motion.button>
           </div>
         </div>
       </div>
