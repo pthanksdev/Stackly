@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, JSX } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DashboardLayout from '../../components/layout/DashboardLayout';
-import Pagination from '../..//dashboard/Pagination';
+import Pagination from '../../components/dashboard/Pagination';
 import { 
   FiHome,
   FiUser,
