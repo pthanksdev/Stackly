@@ -71,6 +71,12 @@ const navItems: NavItem[] = [
     color: "#b7ffca", // Light Green
   },
   {
+    name: "React.js Course",
+    path: "/dashboard/react",
+    icon: <FiCode size={20} />,
+    color: "#c5e6ff", // Light Blue
+  },
+  {
     name: "Code Playground",
     path: "/dashboard/playground",
     icon: <FiPlay size={20} />, // ▶️ - Run/Play button
