@@ -3,8 +3,8 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { FiCopy, FiCheck, FiCode } from 'react-icons/fi';
-import * as buttons from '../components/data/buttons';
-import { ButtonData } from '../components/data/buttons';
+import * as buttons from '../data/buttons';
+import { ButtonData } from '../data/buttons';
 
 interface ButtonCardProps {
   button: ButtonData; // ✅ Now properly typed
