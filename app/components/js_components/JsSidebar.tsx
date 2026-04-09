@@ -2,7 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { FiList, FiBookmark, FiArrowLeft, FiArrowRight } from 'react-icons/fi';
-import { JavaScriptConcept, Category } from '../data/js';
+import { JavaScriptConcept } from '../data/js';
+
+interface Category {
+  id: string;
+  name: string;
+  color: string;
+}
 
 interface JsSidebarProps {
   lessons: JavaScriptConcept[];
