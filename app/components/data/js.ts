@@ -20,7 +20,7 @@ export interface JavaScriptConcept {
     };
   };
   category: "basics" | "dom" | "variables" | "functions" | "arrays" | "dates" | "control";
-  level: "beginner" | "intermediate";
+  level: "beginner" | "intermediate" | "advanced";
   color: string; // From Devdah palette
 }
 
@@ -599,6 +599,76 @@ export const javascriptCourseData: JavaScriptConcept[] = [
     category: "functions",
     level: "beginner",
     color: "#d2b7ff"
+  },
+  {
+    id: 26,
+    title: "Arrow Functions",
+    description: "Compact alternative to traditional functions. They bind `this` lexically.",
+    example: "const add = (a, b) => a + b;\n\n// Avec accolades\nconst saluer = nom => {\n  console.log(`Hello ${nom}`);\n};\n\n// Idéal pour les callbacks\n[1, 2, 3].map(n => n * 2);",
+    preview: { type: "js", content: ["const func = () => {}"] },
+    category: "functions",
+    level: "intermediate",
+    color: "#d2b7ff"
+  },
+  {
+    id: 27,
+    title: "Array Methods (Map/Filter)",
+    description: "Modern declarative ways to manipulate arrays without traditional loops.",
+    example: "const numbers = [1, 2, 3, 4, 5];\n\n// map: Transforme\nconst doubles = numbers.map(n => n * 2);\n\n// filter: Filtre\nconst evens = numbers.filter(n => n % 2 === 0);\n\n// reduce: Accumule\nconst sum = numbers.reduce((acc, curr) => acc + curr, 0);",
+    preview: { type: "js", content: [".map()", ".filter()", ".reduce()"] },
+    category: "arrays",
+    level: "intermediate",
+    color: "#b7ffca"
+  },
+  {
+    id: 28,
+    title: "Promises",
+    description: "Represents the eventual completion of an asynchronous operation. Resolves or Rejects.",
+    example: "const fetchData = new Promise((resolve, reject) => {\n  setTimeout(() => resolve(\"Data loaded!\"), 1000);\n});\n\nfetchData\n  .then(data => console.log(data))\n  .catch(err => console.error(err));",
+    preview: { type: "js", content: ["resolve()", "reject()", ".then().catch()"] },
+    category: "control",
+    level: "advanced",
+    color: "#c5e6ff"
+  },
+  {
+    id: 29,
+    title: "Async / Await",
+    description: "Syntactic sugar over Promises. Makes asynchronous code look synchronous.",
+    example: "async function getUser() {\n  try {\n    const response = await fetch('/api/user');\n    const data = await response.json();\n    console.log(data);\n  } catch (err) {\n    console.error(\"Erreur:\", err);\n  }\n}",
+    preview: { type: "js", content: ["async function", "await", "try...catch"] },
+    category: "control",
+    level: "advanced",
+    color: "#c5e6ff"
+  },
+  {
+    id: 30,
+    title: "Fetch API",
+    description: "The modern interface for fetching resources across the network.",
+    example: "fetch('https://jsonplaceholder.typicode.com/posts/1')\n  .then(response => {\n    if (!response.ok) throw new Error('Network response was not ok');\n    return response.json();\n  })\n  .then(data => console.log(data))\n  .catch(error => console.error('Fetch error:', error));",
+    preview: { type: "js", content: ["fetch(url)", "response.json()"] },
+    category: "dom",
+    level: "advanced",
+    color: "#ffb7c5"
+  },
+  {
+    id: 31,
+    title: "Destructuring",
+    description: "Unpack values from arrays or properties from objects into distinct variables.",
+    example: "const user = { nom: 'Alice', age: 25, ville: 'Paris' };\nconst { nom, age } = user;\n\nconst couleurs = ['Rouge', 'Bleu', 'Vert'];\nconst [primaire, secondaire] = couleurs;",
+    preview: { type: "js", content: ["{ a, b } = obj", "[x, y] = arr"] },
+    category: "variables",
+    level: "intermediate",
+    color: "#d2b7ff"
+  },
+  {
+    id: 32,
+    title: "Classes & OOP",
+    description: "ES6 blueprint for creating objects with shared properties and methods.",
+    example: "class Animal {\n  constructor(name) {\n    this.name = name;\n  }\n  parler() {\n    return `${this.name} fait du bruit.`;\n  }\n}\n\nclass Chien extends Animal {\n  parler() {\n    return `${this.name} aboie.`;\n  }\n}\n\nconst rex = new Chien('Rex');\nconsole.log(rex.parler());",
+    preview: { type: "js", content: ["class", "constructor()", "extends"] },
+    category: "functions",
+    level: "advanced",
+    color: "#d2b7ff"
   }
 ];
 
@@ -618,7 +688,8 @@ export const javascriptCategories = [
 export const javascriptLevels = [
   { id: "all", name: "All Levels", color: "#94a3b8" },
   { id: "beginner", name: "Beginner", color: "#b7ffca" },
-  { id: "intermediate", name: "Intermediate", color: "#ffb7c5" }
+  { id: "intermediate", name: "Intermediate", color: "#ffb7c5" },
+  { id: "advanced", name: "Advanced", color: "#c5e6ff" }
 ];
 
 // ============ KEY CONCEPTS SUMMARY ============

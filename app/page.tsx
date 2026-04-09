@@ -1,9 +1,5 @@
-import RedirectToDashboard from "./components/ui/RedirectToDashboard";
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  return (
-    <div className="">
-      <RedirectToDashboard />
-    </div>
-  );
+  redirect('/dashboard');
 }

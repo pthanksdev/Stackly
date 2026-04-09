@@ -794,6 +794,118 @@ export const cssLessons: CSSLesson[] = [
     level: "intermediate",
     color: "#b7ffca",
   },
+  // ========== FLEXBOX ==========
+  {
+    id: 35,
+    title: "Flex Container & Direction",
+    description: "Defines a flex container; enables flex context for all its direct children.",
+    example: `<style>
+  .flex-container {
+    display: flex;
+    flex-direction: row; /* or column */
+    gap: 10px;
+    background: #d2b7ff;
+    padding: 10px;
+  }
+  .flex-item { background: white; padding: 10px; }
+</style>
+<div class="flex-container">
+  <div class="flex-item">1</div>
+  <div class="flex-item">2</div>
+</div>`,
+    preview: { type: "css", properties: ["display: flex;", "flex-direction: row;"] },
+    category: "layout",
+    level: "intermediate",
+    color: "#c5e6ff"
+  },
+  {
+    id: 36,
+    title: "Justify Content",
+    description: "Aligns flex items along the main axis (horizontal).",
+    example: `<style>
+  .flex-justify {
+    display: flex;
+    justify-content: space-between; /* center, space-around */
+    background: #c5e6ff;
+  }
+  .item { background: white; margin: 4px; padding: 4px; }
+</style>
+<div class="flex-justify">
+  <div class="item">Left</div>
+  <div class="item">Right</div>
+</div>`,
+    preview: { type: "css", properties: ["justify-content: space-between;"] },
+    category: "layout",
+    level: "intermediate",
+    color: "#c5e6ff"
+  },
+  {
+    id: 37,
+    title: "Align Items",
+    description: "Aligns flex items along the cross axis (vertical).",
+    example: `<style>
+  .flex-align {
+    display: flex;
+    align-items: center; /* flex-start, flex-end, stretch */
+    height: 100px;
+    background: #b7ffca;
+  }
+</style>
+<div class="flex-align">
+  <div style="background:white; padding:10px;">Vertically Centered</div>
+</div>`,
+    preview: { type: "css", properties: ["align-items: center;"] },
+    category: "layout",
+    level: "intermediate",
+    color: "#c5e6ff"
+  },
+  // ========== CSS GRID ==========
+  {
+    id: 38,
+    title: "Grid Container & Template",
+    description: "Defines a grid container and specifies columns and rows.",
+    example: `<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+    gap: 10px;
+    background: #475569;
+    padding: 10px;
+  }
+  .grid-item { background: white; padding: 10px; }
+</style>
+<div class="grid-container">
+  <div class="grid-item">1</div>
+  <div class="grid-item">2</div>
+  <div class="grid-item">3</div>
+</div>`,
+    preview: { type: "css", properties: ["display: grid;", "grid-template-columns: 1fr 1fr 1fr;"] },
+    category: "layout",
+    level: "advanced",
+    color: "#c5e6ff"
+  },
+  {
+    id: 39,
+    title: "Grid Item Spanning",
+    description: "Allows a grid item to span multiple rows or columns.",
+    example: `<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .span-col { grid-column: span 2; background: #ffb7c5; }
+  .span-row { grid-row: span 2; background: #64748b; color: white; }
+</style>
+<div class="grid-container">
+  <div class="span-col">Spans 2 Columns</div>
+  <div class="span-row">Spans 2 Rows</div>
+</div>`,
+    preview: { type: "css", properties: ["grid-column: span 2;", "grid-row: span 2;"] },
+    category: "layout",
+    level: "advanced",
+    color: "#c5e6ff"
+  }
 ];
 
 // ========== CATEGORIES FOR FILTERING ==========
@@ -807,6 +919,7 @@ export const cssCategories = [
   { id: "tables", name: "Tables", color: "#d2b7ff" },
   { id: "filters", name: "Filters", color: "#b7ffca" },
   { id: "box", name: "Box Model", color: "#475569" },
+  { id: "layout", name: "Flex & Grid", color: "#c5e6ff" },
   { id: "transform", name: "Transform", color: "#ffb7c5" },
   { id: "animation", name: "Animations", color: "#b7ffca" },
 ];
