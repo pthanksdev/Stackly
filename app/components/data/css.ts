@@ -9,8 +9,8 @@ export interface CSSLesson {
     type: "css";
     properties: string[];
   };
-  category: "selectors" | "text" | "background" | "borders" | "lists" | "tables" | "filters" | "box" | "transform" | "animation";
-  level: "beginner" | "intermediate";
+  category: "selectors" | "text" | "background" | "borders" | "lists" | "tables" | "filters" | "box" | "transform" | "animation" | "layout";
+  level: "beginner" | "intermediate" | "advanced";
   color: string; // MUST be from palette: #475569 | #64748b | #94a3b8 | #ffb7c5 | #c5e6ff | #d2b7ff | #b7ffca
 }
 
