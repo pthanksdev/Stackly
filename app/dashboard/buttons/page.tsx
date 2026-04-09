@@ -3,10 +3,10 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import DashboardLayout from "../../components/layout/DashboardLayout";
-import ButtonCard from "../..//dashboard/ButtonCard";
-import ButtonCardSkeleton from "../..//dashboard/ButtonCardSkeleton";
-import Pagination from "../..//dashboard/Pagination";
-import CodeTypeToggle from "../../dashboard/CodeTypeToggle";
+import ButtonCard from "../../components/dashboard/ButtonCard";
+import ButtonCardSkeleton from "../../components/dashboard/ButtonCardSkeleton";
+import Pagination from "../../components/dashboard/Pagination";
+import CodeTypeToggle from "../../components/dashboard/CodeTypeToggle";
 import { ButtonData, buttonData } from "../../components/data/buttons";
 
 const ITEMS_PER_PAGE = 6;

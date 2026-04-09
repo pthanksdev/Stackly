@@ -3,10 +3,10 @@
 import { useState, useEffect, useCallback } from 'react'; // Added useCallback
 import { motion, AnimatePresence } from 'framer-motion';
 import DashboardLayout from '../../components/layout/DashboardLayout';
-import ThemeCard from '../../dashboard/ThemeCard';
-import CategoryFilter from '../../dashboard/CategoryFilter';
-import Pagination from '../../dashboard/Pagination';
-import ThemeCardSkeleton from '../../dashboard/ThemeCardSkeleton';
+import ThemeCard from '../../components/dashboard/ThemeCard';
+import CategoryFilter from '../../components/dashboard/CategoryFilter';
+import Pagination from '../../components/dashboard/Pagination';
+import ThemeCardSkeleton from '../../components/dashboard/ThemeCardSkeleton';
 import { themes, categories } from '../../components/data/themes';
 
 const ITEMS_PER_PAGE = 6;
