@@ -208,6 +208,94 @@ export const reactLessons: ReactLesson[] = [
     category: "state",
     level: "intermediate",
     color: "#c5e6ff"
+  },
+  {
+    id: 17,
+    tag: "JSX Deep Dive",
+    title: "JSX & Expressions",
+    description: "JSX is a syntax extension for JavaScript. You can embed any JavaScript expression in JSX by wrapping it in curly braces.",
+    example: "function App() {\n  const name = 'Josh Perez';\n  const element = <h1>Hello, {name}</h1>;\n  \n  return (\n    <div>\n      {element}\n      <p>2 + 2 = {2 + 2}</p>\n      <p>{name.toUpperCase()}</p>\n    </div>\n  );\n}",
+    preview: { type: "code", content: ["Syntax Extension", "JS Expressions"] },
+    category: "basics",
+    level: "beginner",
+    color: "#c5e6ff"
+  },
+  {
+    id: 18,
+    tag: "Conditional",
+    title: "Conditional Rendering",
+    description: "Render different components or elements depending on the state of the application using IF operators or ternary expressions.",
+    example: "function App({ isLoggedIn }) {\n  return (\n    <div>\n      {/* Logical && */}\n      {isLoggedIn && <Dashboard />}\n      \n      {/* Ternary Operator */}\n      {isLoggedIn ? <LogoutButton /> : <LoginButton />}\n    </div>\n  );\n}",
+    preview: { type: "code", content: ["Logical &&", "Ternary Operators"] },
+    category: "basics",
+    level: "beginner",
+    color: "#c5e6ff"
+  },
+  {
+    id: 19,
+    tag: "Lists",
+    title: "Lists & Keys",
+    description: "Render multiple components from collections of data. Keys help React identify which items have changed, are added, or are removed.",
+    example: "function NumberList({ numbers }) {\n  const listItems = numbers.map((number) =>\n    <li key={number.toString()}>\n      Item: {number}\n    </li>\n  );\n  return (\n    <ul>{listItems}</ul>\n  );\n}",
+    preview: { type: "code", content: [".map() method", "Unique Keys"] },
+    category: "basics",
+    level: "beginner",
+    color: "#c5e6ff"
+  },
+  {
+    id: 20,
+    tag: "Events",
+    title: "Events & Forms",
+    description: "Handling events in React is very similar to handling events on DOM elements, but with camelCase syntax.",
+    example: "function Form() {\n  const [value, setValue] = useState('');\n\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    alert('Submitted: ' + value);\n  };\n\n  return (\n    <form onSubmit={handleSubmit}>\n      <input \n        type=\"text\" \n        value={value} \n        onChange={(e) => setValue(e.target.value)} \n      />\n      <button type=\"submit\">Submit</button>\n    </form>\n  );\n}",
+    preview: { type: "code", content: ["camelCase events", "Controlled Inputs"] },
+    category: "basics",
+    level: "beginner",
+    color: "#c5e6ff"
+  },
+  {
+    id: 21,
+    tag: "useEffect",
+    title: "useEffect Cleanup",
+    description: "Effects that require cleanup (like subscriptions or timers) should return a cleanup function to prevent memory leaks.",
+    example: "import { useState, useEffect } from 'react';\n\nfunction FriendStatus({ friendId }) {\n  const [isOnline, setIsOnline] = useState(null);\n\n  useEffect(() => {\n    function handleStatusChange(status) {\n      setIsOnline(status.isOnline);\n    }\n    \n    ChatAPI.subscribe(friendId, handleStatusChange);\n    \n    // Cleanup function runs on unmount or before re-running\n    return () => {\n      ChatAPI.unsubscribe(friendId, handleStatusChange);\n    };\n  }, [friendId]); // Re-run if friendId changes\n\n  return isOnline ? 'Online' : 'Offline';\n}",
+    preview: { type: "code", content: ["Memory Leaks", "Subscriptions"] },
+    category: "hooks",
+    level: "intermediate",
+    color: "#c5e6ff"
+  },
+  {
+    id: 22,
+    tag: "useLayoutEffect",
+    title: "useLayoutEffect",
+    description: "Fires synchronously after all DOM mutations. Use this to read layout from the DOM and synchronously re-render.",
+    example: "import { useLayoutEffect, useState, useRef } from 'react';\n\nfunction Tooltip({ children, tooltipText }) {\n  const [width, setWidth] = useState(0);\n  const ref = useRef(null);\n\n  useLayoutEffect(() => {\n    // Measure the DOM element immediately after it's attached\n    setWidth(ref.current.getBoundingClientRect().width);\n  }, []);\n\n  return (\n    <div ref={ref}>\n      {children}\n      <i>Tooltip width: {width}px</i>\n    </div>\n  );\n}",
+    preview: { type: "code", content: ["Synchronous", "DOM Measurements"] },
+    category: "hooks",
+    level: "advanced",
+    color: "#c5e6ff"
+  },
+  {
+    id: 23,
+    tag: "RenderProps",
+    title: "Render Props",
+    description: "A technique for sharing code between React components using a prop whose value is a function.",
+    example: "class MouseTracker extends React.Component {\n  state = { x: 0, y: 0 };\n  \n  handleMouseMove = (e) => {\n    this.setState({ x: e.clientX, y: e.clientY });\n  }\n  \n  render() {\n    return (\n      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>\n        {/* Call the render function prop */}\n        {this.props.render(this.state)}\n      </div>\n    );\n  }\n}\n\n// Usage:\n<MouseTracker render={(mouse) => (\n  <Cat mouse={mouse} />\n)} />",
+    preview: { type: "code", content: ["Pattern", "Function as child"] },
+    category: "advanced",
+    level: "advanced",
+    color: "#c5e6ff"
+  },
+  {
+    id: 24,
+    tag: "HOC",
+    title: "Higher Order Components",
+    description: "An advanced technique for reusing component logic. A function that takes a component and returns a new component.",
+    example: "function withSubscription(WrappedComponent, selectData) {\n  return function(props) {\n    const [data, setData] = useState(selectData(DataSource, props));\n    \n    useEffect(() => {\n      const handleChange = () => setData(selectData(DataSource, props));\n      DataSource.addChangeListener(handleChange);\n      return () => DataSource.removeChangeListener(handleChange);\n    }, [props]);\n    \n    return <WrappedComponent data={data} {...props} />;\n  }\n}\n\n// Usage\nconst CommentListWithSubscription = withSubscription(CommentList, (ds) => ds.getComments());",
+    preview: { type: "code", content: ["Wrapper logic", "Component factory"] },
+    category: "advanced",
+    level: "advanced",
+    color: "#c5e6ff"
   }
 ];
 
