@@ -42,7 +42,7 @@ export default function HtmlLessonCard({
         >
           {lesson.title}
         </h1>
-        <p className="text-sm md:text-base text-gray-600 max-w-2xl">{lesson.description}</p>
+        <p className="text-sm md:text-base text-text-muted max-w-2xl">{lesson.description}</p>
       </div>
 
       {/* Practice header row */}
@@ -54,7 +54,7 @@ export default function HtmlLessonCard({
           >
             {lesson.id}
           </span>
-          <h2 className="text-sm font-semibold text-gray-700">Practice &amp; Examples</h2>
+          <h2 className="text-sm font-semibold text-text-secondary">Practice &amp; Examples</h2>
         </div>
         <div className="flex items-center gap-1">
           {lesson.id > 1 && (
@@ -72,7 +72,7 @@ export default function HtmlLessonCard({
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => onNavigate(lesson.id + 1)}
-              className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700"
+              className="p-1.5 rounded-lg bg-card-bg border border-border-main hover:bg-slate-200 dark:hover:bg-slate-800 text-text-main"
             >
               <FiArrowRight size={16} />
             </motion.button>
@@ -81,14 +81,14 @@ export default function HtmlLessonCard({
       </div>
 
       {/* Code and Preview card */}
-      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
+      <div className="bg-card-bg rounded-xl border border-border-main overflow-hidden shadow-md transition-colors duration-300">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-5 mx-5">
           <div className="space-y-3">
             <div className="flex items-center gap-1.5">
-              <div className="p-1 bg-slate-100 rounded-lg">
-                <FiCode className="text-slate-600" size={14} />
+              <div className="p-1 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                <FiCode className="text-slate-600 dark:text-slate-400" size={14} />
               </div>
-              <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider">
+              <h3 className="text-xs font-semibold text-text-main uppercase tracking-wider">
                 Code Example
               </h3>
             </div>
@@ -124,19 +124,19 @@ export default function HtmlLessonCard({
           {/* Preview column */}
           <div className="space-y-3">
             <div className="flex items-center gap-1.5">
-              <div className="p-1 bg-slate-100 rounded-lg">
-                <FiCode className="text-slate-600" size={14} />
+              <div className="p-1 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                <FiCode className="text-slate-600 dark:text-slate-400" size={14} />
               </div>
-              <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider">
+              <h3 className="text-xs font-semibold text-text-main uppercase tracking-wider">
                 Live Preview
               </h3>
             </div>
 
-            <div className="bg-white border rounded-lg overflow-hidden h-[200px]">
+            <div className="bg-white border text-black border-border-main rounded-lg overflow-hidden h-[200px]">
               <iframe
                 title={`Preview ${lesson.id}`}
                 className="w-full h-full"
-                srcDoc={`<!DOCTYPE html><html><head><style>body { font-family: system-ui, sans-serif; padding: 1rem; }</style></head><body>${lesson.example}</body></html>`}
+                srcDoc={`<!DOCTYPE html><html><head><style>body { font-family: system-ui, sans-serif; padding: 1rem; color: black; }</style></head><body>${lesson.example}</body></html>`}
                 sandbox="allow-scripts"
               />
             </div>

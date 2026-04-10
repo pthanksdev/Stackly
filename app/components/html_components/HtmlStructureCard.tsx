@@ -32,39 +32,39 @@ export default function HtmlStructureCard({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       id="html-structure"
-      className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl border border-indigo-100 overflow-hidden"
+      className="bg-gradient-to-r from-page-bg to-card-bg rounded-2xl border border-border-main overflow-hidden transition-colors duration-300"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6">
         {/* Visual skeleton */}
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <div className="p-1.5 bg-indigo-100 rounded-lg">
-              <FiFileText className="text-indigo-700" size={20} />
+            <div className="p-1.5 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg">
+              <FiFileText className="text-indigo-700 dark:text-indigo-400" size={20} />
             </div>
-            <h3 className="text-lg font-bold text-gray-900">📄 HTML Page Structure</h3>
-            <span className="px-2 py-0.5 bg-indigo-200 text-indigo-800 text-xs font-medium rounded-full">
+            <h3 className="text-lg font-bold text-text-main">📄 HTML Page Structure</h3>
+            <span className="px-2 py-0.5 bg-indigo-200 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 text-xs font-medium rounded-full">
               skeleton
             </span>
           </div>
-          <div className="font-mono text-sm bg-white/80 backdrop-blur rounded-lg p-4 border border-indigo-200">
+          <div className="font-mono text-sm bg-card-bg/80 backdrop-blur rounded-lg p-4 border border-border-main">
             <div>&lt;!DOCTYPE html&gt;</div>
-            <div className="ml-4 text-indigo-700">&lt;html&gt;</div>
-            <div className="ml-8 text-blue-600">&lt;head&gt;</div>
-            <div className="ml-12 text-gray-600">&lt;meta&gt;</div>
-            <div className="ml-12 text-gray-600">&lt;title&gt;Page Title&lt;/title&gt;</div>
-            <div className="ml-8 text-blue-600">&lt;/head&gt;</div>
-            <div className="ml-8 text-emerald-600">&lt;body&gt;</div>
-            <div className="ml-12 text-gray-900">&lt;h1&gt;Main Heading&lt;/h1&gt;</div>
-            <div className="ml-12 text-gray-900">&lt;p&gt;Paragraph text&lt;/p&gt;</div>
-            <div className="ml-8 text-emerald-600">&lt;/body&gt;</div>
-            <div className="ml-4 text-indigo-700">&lt;/html&gt;</div>
+            <div className="ml-4 text-indigo-700 dark:text-indigo-400">&lt;html&gt;</div>
+            <div className="ml-8 text-blue-600 dark:text-blue-400">&lt;head&gt;</div>
+            <div className="ml-12 text-text-muted">&lt;meta&gt;</div>
+            <div className="ml-12 text-text-muted">&lt;title&gt;Page Title&lt;/title&gt;</div>
+            <div className="ml-8 text-blue-600 dark:text-blue-400">&lt;/head&gt;</div>
+            <div className="ml-8 text-emerald-600 dark:text-emerald-400">&lt;body&gt;</div>
+            <div className="ml-12 text-text-main">&lt;h1&gt;Main Heading&lt;/h1&gt;</div>
+            <div className="ml-12 text-text-main">&lt;p&gt;Paragraph text&lt;/p&gt;</div>
+            <div className="ml-8 text-emerald-600 dark:text-emerald-400">&lt;/body&gt;</div>
+            <div className="ml-4 text-indigo-700 dark:text-indigo-400">&lt;/html&gt;</div>
           </div>
         </div>
 
         {/* Tag legend + copy */}
-        <div className="bg-white/80 backdrop-blur rounded-lg p-4">
+        <div className="bg-card-bg/80 backdrop-blur rounded-lg p-4 border border-border-main">
           <div className="flex items-start justify-between mb-3">
-            <h4 className="text-sm font-semibold text-gray-900">What is this?</h4>
+            <h4 className="text-sm font-semibold text-text-main">What is this?</h4>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -76,15 +76,15 @@ export default function HtmlStructureCard({
             </motion.button>
           </div>
           <div className="space-y-2 text-xs">
-            <p><span className="font-bold text-indigo-700">&lt;!DOCTYPE&gt;</span> — HTML5 document</p>
-            <p><span className="font-bold text-indigo-700">&lt;html&gt;</span> — Root element</p>
-            <p><span className="font-bold text-blue-600">&lt;head&gt;</span> — Metadata</p>
-            <p><span className="font-bold text-emerald-600">&lt;body&gt;</span> — Visible content</p>
+            <p><span className="font-bold text-indigo-700 dark:text-indigo-400">&lt;!DOCTYPE&gt;</span> — HTML5 document</p>
+            <p><span className="font-bold text-indigo-700 dark:text-indigo-400">&lt;html&gt;</span> — Root element</p>
+            <p><span className="font-bold text-blue-600 dark:text-blue-400">&lt;head&gt;</span> — Metadata</p>
+            <p><span className="font-bold text-emerald-600 dark:text-emerald-400">&lt;body&gt;</span> — Visible content</p>
           </div>
         </div>
       </div>
 
-      <div className="flex justify-end p-4 bg-white/50 border-t border-indigo-100">
+      <div className="flex justify-end p-4 bg-card-bg/50 border-t border-border-main">
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
