@@ -22,14 +22,14 @@ export default function JsReferenceCards({ references }: JsReferenceCardsProps) 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: idx * 0.1 }}
-          className="bg-white rounded-xl border border-gray-200 p-4 hover:shadow-md transition-shadow"
+          className="bg-card-bg rounded-xl border border-border-main p-4 hover:shadow-md transition-all duration-300"
           style={{ borderTop: `4px solid ${ref.color}` }}
         >
-          <h3 className="text-sm font-bold text-gray-900 mb-3">{ref.title}</h3>
+          <h3 className="text-sm font-bold text-text-main mb-3">{ref.title}</h3>
           <ul className="space-y-1.5">
             {ref.items.map((item, i) => (
-              <li key={i} className="text-xs text-gray-600 flex items-start gap-1.5">
-                <span className="text-gray-400 mt-0.5">•</span>
+              <li key={i} className="text-xs text-text-muted flex items-start gap-1.5">
+                <span className="text-text-muted mt-0.5">•</span>
                 <span>{item}</span>
               </li>
             ))}
