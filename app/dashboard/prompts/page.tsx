@@ -59,7 +59,7 @@ export default function PromptEngineeringPage() {
 
   return (
     <DashboardLayout>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-page-bg transition-colors">
         {/* Custom Styles */}
         <style jsx>{`
           @keyframes typing {
@@ -76,12 +76,12 @@ export default function PromptEngineeringPage() {
               border-color: transparent;
             }
             50% {
-              border-color: black;
+              border-color: var(--color-text-main);
             }
           }
           .typewriter {
             overflow: hidden;
-            border-right: 0.15em solid black;
+            border-right: 0.15em solid var(--color-text-main);
             white-space: nowrap;
             animation:
               typing 3.5s steps(40, end),
@@ -98,16 +98,16 @@ export default function PromptEngineeringPage() {
             left: -100%;
             width: 100%;
             height: 2px;
-            background: black;
+            background: var(--color-text-main);
             transition: left 0.3s ease;
           }
           .border-animate:hover::after {
             left: 0;
           }
           .tab-active {
-            border-bottom: 2px solid black;
+            border-bottom: 2px solid var(--color-text-main);
             font-weight: 600;
-            color: black;
+            color: var(--color-text-main);
           }
           .highlight {
             position: relative;
@@ -120,7 +120,7 @@ export default function PromptEngineeringPage() {
             left: 0;
             width: 100%;
             height: 30%;
-            background-color: rgba(0, 0, 0, 0.08);
+            background-color: var(--color-border-main);
             z-index: -1;
           }
           .hide-scrollbar::-webkit-scrollbar {

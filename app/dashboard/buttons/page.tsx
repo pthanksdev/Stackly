@@ -5,15 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import DashboardLayout from "../../components/layout/DashboardLayout";
 import ButtonCard from "../../components/dashboard/ButtonCard";
 import ButtonCardSkeleton from "../../components/dashboard/ButtonCardSkeleton";
-import Pagination from "../../components/dashboard/Pagination";
 import CodeTypeToggle from "../../components/dashboard/CodeTypeToggle";
 import { ButtonData, buttonData } from "../../components/data/buttons";
 
-const ITEMS_PER_PAGE = 6;
-
 export default function ButtonsPage() {
   const [codeType, setCodeType] = useState<"html" | "tailwind">("html");
-  const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -37,37 +33,6 @@ export default function ButtonsPage() {
     scrollToTop();
   }, [scrollToTop]);
 
-  // Pagination logic
-  const totalItems = buttonData.length;
-  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const displayedButtons = buttonData.slice(
-    startIndex,
-    startIndex + ITEMS_PER_PAGE,
-  );
-
-  // Handle page change with loading state
-  const handlePageChange = async (page: number) => {
-    setIsLoading(true);
-
-    // Scroll to top immediately
-    requestAnimationFrame(() => {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth",
-      });
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    });
-
-    setCurrentPage(page);
-
-    // Simulate loading time for smooth transition
-    await new Promise((resolve) => setTimeout(resolve, 400));
-    setIsLoading(false);
-  };
-
   // Handle code type change
   const handleCodeTypeChange = (type: "html" | "tailwind") => {
     setCodeType(type);
@@ -84,11 +49,11 @@ export default function ButtonsPage() {
         >
           <div className="flex items-center gap-3">
             <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center"
-              style={{ backgroundColor: "#ffb7c5" }}
+              className="w-10 h-10 rounded-xl flex items-center justify-center transition-colors"
+              style={{ backgroundColor: "var(--color-border-main)" }}
             >
               <svg
-                className="w-5 h-5 text-black"
+                className="w-5 h-5 text-text-main"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -140,20 +105,20 @@ export default function ButtonsPage() {
               exit={{ opacity: 0 }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {Array.from({ length: ITEMS_PER_PAGE }).map((_, index) => (
+              {Array.from({ length: 6 }).map((_, index) => (
                 <ButtonCardSkeleton key={index} />
               ))}
             </motion.div>
           ) : (
             <motion.div
-              key={currentPage}
+              key="buttons-grid"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.2 }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {displayedButtons.map((button: { id: any }, index: any) => (
+              {buttonData.map((button: { id: any }, index: any) => (
                 <ButtonCard
                   key={button.id}
                   button={button as ButtonData} 
@@ -164,16 +129,6 @@ export default function ButtonsPage() {
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* Pagination */}
-        {!isLoading && totalPages > 1 && (
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-            isLoading={isLoading}
-          />
-        )}
       </div>
     </DashboardLayout>
   );

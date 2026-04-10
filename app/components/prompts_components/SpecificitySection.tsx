@@ -41,21 +41,21 @@ export default function SpecificitySection({ copiedId, copyToClipboard }: Specif
         <div className="text-center max-w-3xl mx-auto">
           <motion.span
             variants={fadeInUp}
-            className="text-xs font-semibold tracking-wider uppercase px-3 py-1 bg-gray-100 rounded-full text-gray-700"
+            className="text-xs font-semibold tracking-wider uppercase px-3 py-1 bg-card-bg rounded-full text-text-muted border border-border-main transition-colors"
           >
             Step 02
           </motion.span>
           <motion.h2
             variants={fadeInUp}
-            className="text-4xl md:text-5xl font-black mt-6 mb-6"
+            className="text-4xl md:text-5xl font-black mt-6 mb-6 text-text-main"
           >
             Specificity
             <br />
-            <span className="bg-gradient-to-r from-black to-gray-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-text-main to-text-muted bg-clip-text text-transparent transition-colors">
               Matrix
             </span>
           </motion.h2>
-          <motion.p variants={fadeInUp} className="text-xl text-gray-600">
+          <motion.p variants={fadeInUp} className="text-xl text-text-muted transition-colors">
             Vague requests get vague results. Precision in requirements
             yields precision in outputs.
           </motion.p>
@@ -66,36 +66,35 @@ export default function SpecificitySection({ copiedId, copyToClipboard }: Specif
           <motion.div
             variants={fadeInUp}
             whileHover={{ y: -4 }}
-            className="bg-white p-8 rounded-2xl border-2 border-gray-200 shadow-lg hover:border-gray-300 transition-all"
+            className="bg-card-bg p-8 rounded-2xl border-2 border-border-main shadow-lg hover:border-text-main transition-all"
           >
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mr-4">
-                <FiBox className="text-xl" />
+              <div className="w-12 h-12 bg-page-bg rounded-lg flex items-center justify-center mr-4 border border-border-main transition-colors">
+                <FiBox className="text-xl text-text-main" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold">Component-Level</h3>
-                <p className="text-gray-600">Building UI elements</p>
+                <h3 className="text-2xl font-bold text-text-main transition-colors">Component-Level</h3>
+                <p className="text-text-muted transition-colors">Building UI elements</p>
               </div>
             </div>
 
             <div className="mb-8">
               <div className="flex items-center mb-4">
-                <div className="w-6 h-6 rounded-full bg-gray-300 mr-3"></div>
-                <h4 className="font-bold">Vague Request</h4>
+                <div className="w-6 h-6 rounded-full bg-border-main mr-3 opacity-50"></div>
+                <h4 className="font-bold text-text-muted">Vague Request</h4>
               </div>
-              <div className="bg-gray-50 p-5 rounded-lg border border-gray-200 mb-6">
-                <p className="text-gray-700 font-mono">"Make a button"</p>
+              <div className="bg-page-bg p-5 rounded-lg border border-border-main mb-6 transition-colors">
+                <p className="text-text-muted font-mono">"Make a button"</p>
               </div>
 
               <div className="flex items-center mb-4">
-                <div className="w-6 h-6 rounded-full bg-black mr-3"></div>
-                <h4 className="font-bold">Specific Request</h4>
+                <div className="w-6 h-6 rounded-full bg-text-main mr-3 transition-colors"></div>
+                <h4 className="font-bold text-text-main">Specific Request</h4>
               </div>
               <div
-                className="text-white p-6 rounded-lg"
-                style={{ backgroundColor: "#475569" }}
+                className="bg-text-main text-page-bg p-6 rounded-lg shadow-inner"
               >
-                <code className="font-mono text-sm block leading-relaxed">
+                <code className="font-mono text-sm block leading-relaxed text-page-bg">
                   "Create a React button component with:
                   <br />
                   • Primary/secondary/ghost variants
@@ -137,7 +136,7 @@ export default function SpecificitySection({ copiedId, copyToClipboard }: Specif
                       "component-copy",
                     )
                   }
-                  className="mt-6 text-sm bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg flex items-center gap-2"
+                  className="mt-6 text-sm bg-page-bg/10 hover:bg-page-bg/20 text-page-bg py-2 px-4 rounded-lg flex items-center gap-2 border border-page-bg/20 transition-all"
                 >
                   {copiedId === "component-copy" ? (
                     <>
@@ -157,38 +156,37 @@ export default function SpecificitySection({ copiedId, copyToClipboard }: Specif
           <motion.div
             variants={fadeInUp}
             whileHover={{ y: -4 }}
-            className="bg-white p-8 rounded-2xl border-2 border-gray-200 shadow-lg hover:border-gray-300 transition-all"
+            className="bg-card-bg p-8 rounded-2xl border-2 border-border-main shadow-lg hover:border-text-main transition-all"
           >
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mr-4">
-                <FiCode className="text-xl" />
+              <div className="w-12 h-12 bg-page-bg rounded-lg flex items-center justify-center mr-4 border border-border-main transition-colors">
+                <FiCode className="text-xl text-text-main" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold">Function-Level</h3>
-                <p className="text-gray-600">Implementing features</p>
+                <h3 className="text-2xl font-bold text-text-main transition-colors">Function-Level</h3>
+                <p className="text-text-muted transition-colors">Implementing features</p>
               </div>
             </div>
 
             <div className="mb-8">
               <div className="flex items-center mb-4">
-                <div className="w-6 h-6 rounded-full bg-gray-300 mr-3"></div>
-                <h4 className="font-bold">Vague Request</h4>
+                <div className="w-6 h-6 rounded-full bg-border-main mr-3 opacity-50"></div>
+                <h4 className="font-bold text-text-muted">Vague Request</h4>
               </div>
-              <div className="bg-gray-50 p-5 rounded-lg border border-gray-200 mb-6">
-                <p className="text-gray-700 font-mono">
+              <div className="bg-page-bg p-5 rounded-lg border border-border-main mb-6 transition-colors">
+                <p className="text-text-muted font-mono">
                   "Write authentication"
                 </p>
               </div>
 
               <div className="flex items-center mb-4">
-                <div className="w-6 h-6 rounded-full bg-black mr-3"></div>
-                <h4 className="font-bold">Specific Request</h4>
+                <div className="w-6 h-6 rounded-full bg-text-main mr-3 transition-colors"></div>
+                <h4 className="font-bold text-text-main">Specific Request</h4>
               </div>
               <div
-                className="text-white p-6 rounded-lg"
-                style={{ backgroundColor: "#475569" }}
+                className="bg-text-main text-page-bg p-6 rounded-lg shadow-inner"
               >
-                <code className="font-mono text-sm block leading-relaxed">
+                <code className="font-mono text-sm block leading-relaxed text-page-bg">
                   "Implement a NextAuth.js configuration with:
                   <br />
                   • Email/password login
@@ -224,7 +222,7 @@ export default function SpecificitySection({ copiedId, copyToClipboard }: Specif
                       "function-copy",
                     )
                   }
-                  className="mt-6 text-sm bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg flex items-center gap-2"
+                  className="mt-6 text-sm bg-page-bg/10 hover:bg-page-bg/20 text-page-bg py-2 px-4 rounded-lg flex items-center gap-2 border border-page-bg/20 transition-all"
                 >
                   {copiedId === "function-copy" ? (
                     <>
