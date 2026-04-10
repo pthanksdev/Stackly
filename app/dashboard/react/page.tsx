@@ -88,7 +88,7 @@ export default function ReactCoursePage() {
           </div>
 
           <div className="text-center py-12">
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-text-muted transition-colors">
               React makes it painless to create interactive UIs. Design simple views for each state in your application!
             </p>
           </div>

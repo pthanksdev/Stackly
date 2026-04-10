@@ -120,20 +120,20 @@ export default function ThemesPage() {
               </svg>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">CSS Themes</h1>
-              <p className="text-gray-600">Discover and use beautiful color palettes for your projects</p>
+              <h1 className="text-2xl font-bold text-text-main">CSS Themes</h1>
+              <p className="text-text-muted">Discover and use beautiful color palettes for your projects</p>
             </div>
           </div>
 
           {/* Stats */}
-          <div className="flex items-center gap-6 text-sm">
+            <div className="flex items-center gap-6 text-sm">
             <div className="flex items-center gap-2">
-              <span className="font-semibold text-gray-900">{themes.length}</span>
-              <span className="text-gray-600">Total Themes</span>
+              <span className="font-semibold text-text-main">{themes.length}</span>
+              <span className="text-text-muted">Total Themes</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="font-semibold text-gray-900">{categories.length - 1}</span>
-              <span className="text-gray-600">Categories</span>
+              <span className="font-semibold text-text-main">{categories.length - 1}</span>
+              <span className="text-text-muted">Categories</span>
             </div>
           </div>
         </motion.div>
@@ -191,8 +191,8 @@ export default function ThemesPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">No themes found</h3>
-            <p className="text-gray-600">Try selecting a different category</p>
+            <h3 className="text-lg font-semibold text-text-main mb-2">No themes found</h3>
+            <p className="text-text-muted">Try selecting a different category</p>
           </motion.div>
         )}
 

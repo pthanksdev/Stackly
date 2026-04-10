@@ -365,7 +365,7 @@ export default function TailwindCoursePage() {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl overflow-hidden shadow-xl p-6"
+            className="bg-gradient-to-br from-slate-900 to-slate-800 dark:from-black dark:to-slate-950 rounded-2xl overflow-hidden shadow-xl p-6 transition-all duration-500"
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 bg-white/20 rounded-xl">
@@ -390,10 +390,10 @@ export default function TailwindCoursePage() {
               <button
                 key={cat.id}
                 onClick={() => setFilterCategory(cat.id)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all`}
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 border border-border-main`}
                 style={{
-                  backgroundColor: filterCategory === cat.id ? cat.color : '#f1f5f9',
-                  color: filterCategory === cat.id ? '#0a0a0a' : '#475569'
+                  backgroundColor: filterCategory === cat.id ? cat.color : 'var(--color-card-bg)',
+                  color: filterCategory === cat.id ? '#000' : 'var(--color-text-main)'
                 }}
               >
                 {cat.name}
@@ -418,9 +418,9 @@ export default function TailwindCoursePage() {
                     >
                       Lesson {lesson.id}
                     </span>
-                    <span className="text-xs text-slate-400">•</span>
-                    <span className="text-xs text-slate-500 capitalize">{lesson.category}</span>
-                    <span className="text-[10px] px-2 py-0.5 bg-slate-100 rounded-full text-slate-600">
+                    <span className="text-xs text-text-muted">•</span>
+                    <span className="text-xs text-text-muted capitalize">{lesson.category}</span>
+                    <span className="text-[10px] px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-full text-text-muted">
                       {lesson.level}
                     </span>
                   </div>
@@ -432,7 +432,7 @@ export default function TailwindCoursePage() {
                     {lesson.title}
                   </h1>
                   
-                  <p className="text-sm md:text-base text-gray-600 max-w-2xl mb-2">
+                  <p className="text-sm md:text-base text-text-muted max-w-2xl mb-2">
                     {lesson.description}
                   </p>
 
@@ -451,7 +451,7 @@ export default function TailwindCoursePage() {
                     >
                       {lesson.id}
                     </span>
-                    <h2 className="text-sm font-semibold text-gray-700">Try it yourself:</h2>
+                    <h2 className="text-sm font-semibold text-text-secondary">Try it yourself:</h2>
                   </div>
                   
                   <div className="flex items-center gap-1">
@@ -470,7 +470,7 @@ export default function TailwindCoursePage() {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={goToNext}
-                        className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700"
+                        className="p-1.5 rounded-lg bg-card-bg border border-border-main hover:bg-slate-200 dark:hover:bg-slate-800 text-text-main"
                       >
                         <FiArrowRight size={16} />
                       </motion.button>
@@ -479,19 +479,19 @@ export default function TailwindCoursePage() {
                 </div>
 
                 {/* LESSON CARD */}
-                <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
+                <div className="bg-card-bg rounded-xl border border-border-main overflow-hidden shadow-md transition-colors duration-300">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-5">
                     
                     {/* LEFT: Live Preview */}
                     <div className="space-y-3">
                       <div className="flex items-center gap-1.5">
-                        <div className="p-1 bg-slate-100 rounded-lg">
-                          <FiEye className="text-slate-600" size={14} />
+                        <div className="p-1 bg-slate-100 dark:bg-slate-800 rounded-lg transition-colors">
+                          <FiEye className="text-slate-600 dark:text-slate-400" size={14} />
                         </div>
-                        <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider">Live Preview</h3>
+                        <h3 className="text-xs font-semibold text-text-main uppercase tracking-wider">Live Preview</h3>
                       </div>
                       
-                      <div className="bg-white rounded-lg p-6 border border-gray-200 min-h-[180px] flex items-center justify-center shadow-inner">
+                      <div className="bg-white dark:bg-slate-100 rounded-lg p-6 border border-border-main min-h-[180px] flex items-center justify-center shadow-inner transition-colors">
                         <div dangerouslySetInnerHTML={{ __html: lesson.preview }} />
                       </div>
                     </div>
@@ -499,10 +499,10 @@ export default function TailwindCoursePage() {
                     {/* RIGHT: Code + Copy */}
                     <div className="space-y-3">
                       <div className="flex items-center gap-1.5">
-                        <div className="p-1 bg-slate-100 rounded-lg">
-                          <FiCode className="text-slate-600" size={14} />
+                        <div className="p-1 bg-slate-100 dark:bg-slate-800 rounded-lg transition-colors">
+                          <FiCode className="text-slate-600 dark:text-slate-400" size={14} />
                         </div>
-                        <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider">Code Example</h3>
+                        <h3 className="text-xs font-semibold text-text-main uppercase tracking-wider">Code Example</h3>
                       </div>
                       
                       <div className="bg-gray-900 rounded-lg p-3 font-mono text-[10px] md:text-xs overflow-x-auto max-h-[200px] overflow-y-auto">
@@ -542,10 +542,10 @@ export default function TailwindCoursePage() {
           </div>
 
           {/* FOOTER */}
-          <div className="text-center py-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
-            <p className="text-sm text-slate-600">
+          <div className="text-center py-12 bg-gradient-to-r from-page-bg to-card-bg border border-border-main rounded-xl transition-all duration-300">
+            <p className="text-sm text-text-secondary">
               🎉 You've completed {filteredLessons.length} Tailwind CSS lessons! <br />
-              <span className="text-xs text-slate-500">Remember: Tailwind is just utility classes - no magic, just convenience.</span>
+              <span className="text-xs text-text-muted">Remember: Tailwind is just utility classes - no magic, just convenience.</span>
             </p>
           </div>
         </div>
@@ -554,14 +554,14 @@ export default function TailwindCoursePage() {
         <div className="w-64 hidden lg:block">
           <div className="sticky top-24 space-y-4">
             
-            <div className="bg-white rounded-xl border border-gray-200 p-3">
+            <div className="bg-card-bg rounded-xl border border-border-main p-3 transition-colors duration-300">
               <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-medium text-gray-700">Progress</span>
-                <span className="text-xs font-semibold text-slate-600">
+                <span className="text-xs font-medium text-text-secondary">Progress</span>
+                <span className="text-xs font-semibold text-text-muted">
                   {filteredLessons.findIndex(l => l.id === activeSection) + 1}/{filteredLessons.length}
                 </span>
               </div>
-              <div className="w-full bg-slate-100 rounded-full h-1">
+              <div className="w-full bg-page-bg rounded-full h-1">
                 <div 
                   className="h-1 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
                   style={{ width: `${((filteredLessons.findIndex(l => l.id === activeSection) + 1) / filteredLessons.length) * 100}%` }}
@@ -569,15 +569,15 @@ export default function TailwindCoursePage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
-              <div className="p-3 border-b border-gray-100 bg-gradient-to-r from-slate-50 to-white">
+            <div className="bg-card-bg rounded-xl border border-border-main overflow-hidden shadow-sm transition-colors duration-300">
+              <div className="p-3 border-b border-border-main bg-gradient-to-r from-page-bg to-card-bg">
                 <div className="flex items-center gap-2">
-                  <div className="p-1.5 bg-slate-100 rounded-lg">
-                    <FiList className="text-slate-600" size={16} />
+                  <div className="p-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                    <FiList className="text-slate-600 dark:text-slate-400" size={16} />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-gray-900">Course Outline</h3>
-                    <p className="text-xs text-slate-500">{filteredLessons.length} lessons</p>
+                    <h3 className="text-sm font-semibold text-text-main">Course Outline</h3>
+                    <p className="text-xs text-text-muted">{filteredLessons.length} lessons</p>
                   </div>
                 </div>
               </div>
@@ -587,29 +587,29 @@ export default function TailwindCoursePage() {
                   <button
                     key={lesson.id}
                     onClick={() => scrollToSection(lesson.id)}
-                    className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg text-xs transition-all mb-0.5 ${
-                      activeSection === lesson.id ? 'bg-slate-100' : 'hover:bg-slate-50'
+                    className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg text-xs transition-colors mb-0.5 ${
+                      activeSection === lesson.id ? 'bg-slate-100 dark:bg-slate-800' : 'hover:bg-slate-50 dark:hover:bg-slate-800'
                     }`}
                     style={{
                       borderLeft: activeSection === lesson.id ? `2px solid ${lesson.color}` : '2px solid transparent'
                     }}
                   >
                     <span 
-                      className="w-5 h-5 rounded flex items-center justify-center text-[10px] font-mono"
+                      className="w-5 h-5 rounded flex items-center justify-center text-[10px] font-mono transition-colors"
                       style={{ 
-                        backgroundColor: activeSection === lesson.id ? `${lesson.color}20` : '#f1f5f9',
+                        backgroundColor: activeSection === lesson.id ? `${lesson.color}20` : 'var(--color-border-main)',
                         color: lesson.color
                       }}
                     >
                       {lesson.id}
                     </span>
                     <div className="flex-1 text-left">
-                      <div className={`font-medium truncate ${
-                        activeSection === lesson.id ? 'text-gray-900' : 'text-gray-700'
+                      <div className={`font-medium truncate transition-colors ${
+                        activeSection === lesson.id ? 'text-text-main' : 'text-text-secondary'
                       }`}>
                         {lesson.title}
                       </div>
-                      <div className="text-[10px] text-slate-500">
+                      <div className="text-[10px] text-text-muted">
                         {lesson.concept}
                       </div>
                     </div>
@@ -619,15 +619,15 @@ export default function TailwindCoursePage() {
             </div>
 
             {/* CHEAT SHEET */}
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl border border-blue-200 p-3">
-              <h4 className="text-xs font-bold text-gray-900 mb-2">⚡ Quick Reference</h4>
+            <div className="bg-gradient-to-br from-page-bg to-card-bg rounded-xl border border-border-main p-3 transition-colors duration-300">
+              <h4 className="text-xs font-bold text-text-main mb-2">⚡ Quick Reference</h4>
               <div className="space-y-1 text-[10px]">
-                <div><span className="font-mono bg-white px-1 py-0.5 rounded">p-4</span> = padding: 1rem</div>
-                <div><span className="font-mono bg-white px-1 py-0.5 rounded">m-2</span> = margin: 0.5rem</div>
-                <div><span className="font-mono bg-white px-1 py-0.5 rounded">flex</span> = display: flex</div>
-                <div><span className="font-mono bg-white px-1 py-0.5 rounded">grid-cols-3</span> = 3 columns</div>
-                <div><span className="font-mono bg-white px-1 py-0.5 rounded">text-lg</span> = 1.125rem</div>
-                <div><span className="font-mono bg-white px-1 py-0.5 rounded">hover:</span> = on hover</div>
+                <div><span className="font-mono bg-white dark:bg-slate-800 px-1 py-0.5 rounded border border-border-main">p-4</span> = padding: 1rem</div>
+                <div><span className="font-mono bg-white dark:bg-slate-800 px-1 py-0.5 rounded border border-border-main">m-2</span> = margin: 0.5rem</div>
+                <div><span className="font-mono bg-white dark:bg-slate-800 px-1 py-0.5 rounded border border-border-main">flex</span> = display: flex</div>
+                <div><span className="font-mono bg-white dark:bg-slate-800 px-1 py-0.5 rounded border border-border-main">grid-cols-3</span> = 3 columns</div>
+                <div><span className="font-mono bg-white dark:bg-slate-800 px-1 py-0.5 rounded border border-border-main">text-lg</span> = 1.125rem</div>
+                <div><span className="font-mono bg-white dark:bg-slate-800 px-1 py-0.5 rounded border border-border-main">hover:</span> = on hover</div>
               </div>
             </div>
           </div>
