@@ -35,13 +35,13 @@ export default function ButtonCard({ button, index, codeType }: ButtonCardProps)
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.05 }}
       whileHover={{ y: -4 }}
-      className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300"
+      className="bg-card-bg rounded-xl border border-border-main overflow-hidden hover:shadow-lg transition-all duration-300"
     >
       <div className="p-6">
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-2">
-            <h3 className="font-semibold text-gray-900">{button.title}</h3>
+            <h3 className="font-semibold text-text-main">{button.title}</h3>
             {button.category && (
               <span 
                 className="px-2 py-0.5 rounded-full text-xs font-medium"
@@ -81,10 +81,10 @@ export default function ButtonCard({ button, index, codeType }: ButtonCardProps)
 
         {/* Button Preview */}
         <div 
-          className="mb-6 p-6 rounded-lg flex items-center justify-center min-h-[120px]"
+          className="mb-6 p-6 rounded-lg flex items-center justify-center min-h-[120px] transition-colors"
           style={{ 
-            backgroundColor: '#111',
-            border: '1px solid #e2e8f0'
+            backgroundColor: 'rgba(0,0,0,0.05)',
+            border: '1px solid var(--color-border-main)'
           }}
         >
           <button 
@@ -99,8 +99,8 @@ export default function ButtonCard({ button, index, codeType }: ButtonCardProps)
         <div className="space-y-3">
           <button
             onClick={() => setShowCode(!showCode)}
-            className="flex items-center gap-2 text-sm font-medium"
-            style={{ color: '#64748b' }}
+            className="flex items-center gap-2 text-sm font-medium transition-colors"
+            style={{ color: 'var(--color-text-muted)' }}
           >
             <FiCode size={16} />
             {showCode ? 'Hide Code' : 'Show Code'}
