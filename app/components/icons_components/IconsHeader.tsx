@@ -16,20 +16,20 @@ export default function IconsHeader() {
           style={{ backgroundColor: '#d2b7ff' }}
         />
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">React Icons Gallery</h1>
-          <p className="text-gray-600">Feather Icons - Complete collection with names and live previews</p>
+          <h1 className="text-3xl font-bold text-text-main">React Icons Gallery</h1>
+          <p className="text-text-muted">Feather Icons - Complete collection with names and live previews</p>
         </div>
       </div>
 
       {/* Stats */}
       <div className="flex items-center gap-6 text-sm">
         <div className="flex items-center gap-2">
-          <span className="font-semibold text-gray-900">{iconData.length}</span>
-          <span className="text-gray-600">Total Icons</span>
+          <span className="font-semibold text-text-main">{iconData.length}</span>
+          <span className="text-text-muted">Total Icons</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="font-semibold text-gray-900">{iconCategories.length - 1}</span>
-          <span className="text-gray-600">Categories</span>
+          <span className="font-semibold text-text-main">{iconCategories.length - 1}</span>
+          <span className="text-text-muted">Categories</span>
         </div>
       </div>
     </motion.div>

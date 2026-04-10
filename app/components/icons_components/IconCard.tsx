@@ -18,7 +18,7 @@ export default function IconCard({ icon, copiedName, onCopy, variants }: IconCar
     <motion.div
       variants={variants}
       whileHover={{ y: -4, scale: 1.02 }}
-      className="bg-black rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all p-6 group"
+      className="bg-card-bg rounded-xl border border-border-main overflow-hidden hover:shadow-lg transition-all p-6 group"
     >
       <div className="flex flex-col items-center text-center space-y-4">
         {/* Icon Preview */}
@@ -31,7 +31,7 @@ export default function IconCard({ icon, copiedName, onCopy, variants }: IconCar
 
         {/* Icon Name */}
         <div className="space-y-1">
-          <h3 className="font-mono text-sm font-medium text-white break-all">
+          <h3 className="font-mono text-sm font-medium text-text-main break-all">
             {icon.name}
           </h3>
           <span
@@ -49,8 +49,9 @@ export default function IconCard({ icon, copiedName, onCopy, variants }: IconCar
           onClick={() => onCopy(icon.name, icon.id)}
           className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-xs font-medium transition-all"
           style={{
-            backgroundColor: copiedName === icon.id ? '#0eda44' : '#131414',
-            color: copiedName === icon.id ? '#000' : '#ccc9c9',
+            backgroundColor: copiedName === icon.id ? '#10b981' : 'var(--color-page-bg)',
+            color: copiedName === icon.id ? '#000' : 'var(--color-text-muted)',
+            border: '1px solid var(--color-border-main)'
           }}
         >
           {copiedName === icon.id ? (

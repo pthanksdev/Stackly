@@ -23,13 +23,13 @@ export default function IconsCategoryFilter({
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.05 }}
             onClick={() => onCategoryChange(category.id)}
-            className="relative px-4 py-2 rounded-lg text-sm font-medium transition-all"
+            className="relative px-4 py-2 rounded-lg text-sm font-medium transition-all border border-border-main"
             style={{
               backgroundColor: isSelected ? category.color : 'transparent',
-              color: isSelected ? '#000' : '#64748b',
-              border: isSelected ? 'none' : '1px solid #e2e8f0',
+              color: isSelected ? '#000' : 'var(--color-text-muted)',
+              border: isSelected ? 'none' : '1px solid var(--color-border-main)',
             }}
-            whileHover={!isSelected ? { scale: 1.05, backgroundColor: '#f8fafc' } : {}}
+            whileHover={!isSelected ? { scale: 1.05, backgroundColor: 'var(--color-page-bg)' } : {}}
             whileTap={{ scale: 0.95 }}
           >
             {category.name}

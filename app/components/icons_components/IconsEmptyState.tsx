@@ -21,8 +21,8 @@ export default function IconsEmptyState({ searchQuery, onClearSearch }: IconsEmp
       >
         <FiAlertCircle className="w-10 h-10" style={{ color: '#ffb7c5' }} />
       </div>
-      <h3 className="text-xl font-semibold text-gray-900 mb-2">No icons found</h3>
-      <p className="text-gray-600 mb-6 max-w-md mx-auto">
+      <h3 className="text-xl font-semibold text-text-main mb-2">No icons found</h3>
+      <p className="text-text-muted mb-6 max-w-md mx-auto">
         {searchQuery
           ? `No icons match "${searchQuery}". Try a different search term or category.`
           : 'No icons available in this category.'}
@@ -30,7 +30,7 @@ export default function IconsEmptyState({ searchQuery, onClearSearch }: IconsEmp
       {searchQuery && (
         <button
           onClick={onClearSearch}
-          className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+          className="px-6 py-3 bg-text-main text-page-bg rounded-lg hover:opacity-90 transition-all font-medium border border-border-main"
         >
           Clear Search
         </button>
