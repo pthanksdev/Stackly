@@ -41,13 +41,13 @@ export default function ConstraintsSection({ copiedId, copyToClipboard }: Constr
         <div className="lg:w-2/5">
           <motion.span
             variants={fadeInUp}
-            className="text-xs font-semibold tracking-wider uppercase px-3 py-1 bg-gray-100 rounded-full text-gray-700"
+            className="text-xs font-semibold tracking-wider uppercase px-3 py-1 bg-card-bg rounded-full text-text-muted border border-border-main transition-colors"
           >
             Step 03
           </motion.span>
           <motion.h2
             variants={fadeInUp}
-            className="text-4xl font-black mt-6 mb-6"
+            className="text-4xl font-black mt-6 mb-6 text-text-main"
           >
             Constraints
             <br />
@@ -55,10 +55,10 @@ export default function ConstraintsSection({ copiedId, copyToClipboard }: Constr
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-xl text-gray-600 mb-8"
+            className="text-xl text-text-muted mb-8 transition-colors"
           >
             The most overlooked yet critical component. Constraints tell
-            the AI what <span className="font-bold">NOT</span> to do,
+            the AI what <span className="font-bold text-text-main">NOT</span> to do,
             preventing unwanted patterns and assumptions.
           </motion.p>
 
@@ -69,10 +69,10 @@ export default function ConstraintsSection({ copiedId, copyToClipboard }: Constr
               "Eliminates unwanted features or approaches",
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-black flex items-center justify-center mt-0.5 flex-shrink-0">
-                  <FiCheck className="text-white text-xs" />
+                <div className="w-6 h-6 rounded-full bg-text-main flex items-center justify-center mt-0.5 flex-shrink-0 transition-colors">
+                  <FiCheck className="text-page-bg text-xs" />
                 </div>
-                <p className="text-gray-700">{item}</p>
+                <p className="text-text-muted transition-colors">{item}</p>
               </div>
             ))}
           </motion.div>
@@ -81,59 +81,40 @@ export default function ConstraintsSection({ copiedId, copyToClipboard }: Constr
         <div className="lg:w-3/5">
           <motion.div
             variants={fadeInUp}
-            className="text-white p-8 rounded-2xl shadow-xl"
-            style={{ backgroundColor: "#475569" }}
+            className="bg-text-main text-page-bg p-8 rounded-2xl shadow-xl transition-colors"
           >
-            <h3 className="text-2xl font-bold mb-6">
+            <h3 className="text-2xl font-bold mb-6 text-page-bg">
               Constraints Example
             </h3>
-            <div className="bg-gray-800/50 p-6 rounded-lg font-mono text-sm overflow-x-auto mb-6 border border-gray-600">
-              <span className="text-gray-300 font-bold">
+            <div className="bg-page-bg/10 p-6 rounded-lg font-mono text-sm overflow-x-auto mb-6 border border-page-bg/20">
+              <span className="text-page-bg font-bold opacity-80 uppercase tracking-widest">
                 CONSTRAINTS:
               </span>
               <br />
               <br />
-              <span className="text-gray-300">
-                - DO NOT use any external UI libraries (build from
-                scratch)
-              </span>
-              <br />
-              <span className="text-gray-300">
-                - DO NOT use useState for form handling (use
-                react-hook-form)
-              </span>
-              <br />
-              <span className="text-gray-300">
-                - DO NOT add any console.log statements in production code
-              </span>
-              <br />
-              <span className="text-gray-300">
-                - DO NOT hardcode API URLs (use environment variables)
-              </span>
-              <br />
-              <span className="text-gray-300">
-                - DO NOT use any deprecated Next.js 13 patterns
-              </span>
-              <br />
-              <br />
-              <span className="text-gray-300">
-                - MUST be TypeScript strict mode compliant
-              </span>
-              <br />
-              <span className="text-gray-300">
-                - MUST follow ESLint rules (no-explicit-any, etc.)
-              </span>
-              <br />
-              <span className="text-gray-300">
-                - MUST be mobile-responsive first
-              </span>
-              <br />
-              <span className="text-gray-300">
-                - MUST include unit tests for core functionality
-              </span>
+              <div className="space-y-1 opacity-90">
+                <span>- DO NOT use any external UI libraries (build from scratch)</span>
+                <br />
+                <span>- DO NOT use useState for form handling (use react-hook-form)</span>
+                <br />
+                <span>- DO NOT add any console.log statements in production code</span>
+                <br />
+                <span>- DO NOT hardcode API URLs (use environment variables)</span>
+                <br />
+                <span>- DO NOT use any deprecated Next.js 13 patterns</span>
+                <br />
+                <br />
+                <span>- MUST be TypeScript strict mode compliant</span>
+                <br />
+                <span>- MUST follow ESLint rules (no-explicit-any, etc.)</span>
+                <br />
+                <span>- MUST be mobile-responsive first</span>
+                <br />
+                <span>- MUST include unit tests for core functionality</span>
+              </div>
             </div>
             <div className="flex items-center justify-between flex-wrap gap-4">
-              <p className="text-gray-200">
+              <p className="text-page-bg opacity-80">
                 Copy this constraints template for your projects
               </p>
               <motion.button
@@ -155,7 +136,7 @@ export default function ConstraintsSection({ copiedId, copyToClipboard }: Constr
                     "constraints-copy",
                   )
                 }
-                className="bg-white text-black hover:bg-gray-100 font-medium py-3 px-6 rounded-lg flex items-center gap-2 shadow-md"
+                className="bg-page-bg text-text-main hover:opacity-90 font-medium py-3 px-6 rounded-lg flex items-center gap-2 shadow-md transition-all"
               >
                 {copiedId === "constraints-copy" ? (
                   <>

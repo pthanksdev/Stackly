@@ -16,7 +16,7 @@ export default function HeroSection({ scrollToSection }: HeroSectionProps) {
   return (
     <section
       id="hero"
-      className="py-20 px-4 border-b border-gray-200 bg-white"
+      className="py-20 px-4 border-b border-border-main bg-page-bg transition-colors"
     >
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col lg:flex-row items-center gap-16">

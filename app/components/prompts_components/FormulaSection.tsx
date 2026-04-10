@@ -58,7 +58,7 @@ export default function FormulaSection() {
         <div className="text-center max-w-3xl mx-auto">
           <motion.span
             variants={fadeInUp}
-            className="text-xs font-semibold tracking-wider uppercase px-3 py-1 bg-gray-100 rounded-full text-gray-700"
+            className="text-xs font-semibold tracking-wider uppercase px-3 py-1 bg-card-bg rounded-full text-text-muted border border-border-main transition-colors"
           >
             The Core Principle
           </motion.span>
@@ -66,13 +66,13 @@ export default function FormulaSection() {
             variants={fadeInUp}
             className="text-4xl md:text-5xl font-black mt-6 mb-6"
           >
-            The Ultimate
-            <br />
-            <span className="bg-gradient-to-r from-black to-gray-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-text-main to-text-muted bg-clip-text text-transparent transition-colors">
+              The Ultimate
+              <br />
               Prompt Formula
             </span>
           </motion.h2>
-          <motion.p variants={fadeInUp} className="text-xl text-gray-600">
+          <motion.p variants={fadeInUp} className="text-xl text-text-muted transition-colors">
             A systematic approach that works for ChatGPT, Claude, Gemini,
             and all major AI models.
           </motion.p>
@@ -90,9 +90,9 @@ export default function FormulaSection() {
                 y: -4,
                 boxShadow: "0 20px 25px -5px rgba(0,0,0,0.05)",
               }}
-              className="bg-white p-8 rounded-xl border border-gray-200 hover:border-gray-300 transition-all"
+              className="bg-card-bg p-8 rounded-xl border border-border-main hover:border-text-main transition-all"
             >
-              <div className="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center mb-6">
+              <div className="w-14 h-14 rounded-full bg-page-bg flex items-center justify-center mb-6 border border-border-main transition-colors">
                 <span className="text-2xl font-black">{item.number}</span>
               </div>
               <h3 className="text-xl font-bold mb-3">{item.title}</h3>
