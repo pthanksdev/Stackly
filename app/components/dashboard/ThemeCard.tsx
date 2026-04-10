@@ -43,7 +43,7 @@ const copyToClipboard = (color: string) => {
       whileHover={{ y: -4 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300"
+      className="bg-card-bg rounded-xl border border-border-main overflow-hidden hover:shadow-lg transition-all duration-300"
     >
       {/* Color Palette Preview */}
       <div className="h-32 flex overflow-hidden">
@@ -71,7 +71,7 @@ const copyToClipboard = (color: string) => {
         <div className="flex items-start justify-between mb-3">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <h3 className="font-semibold text-gray-900">{theme.name}</h3>
+              <h3 className="font-semibold text-text-main">{theme.name}</h3>
               <span 
                 className="px-2 py-0.5 rounded-full text-xs font-medium"
                 style={{ 
@@ -82,7 +82,7 @@ const copyToClipboard = (color: string) => {
                 {theme.category}
               </span>
             </div>
-            <p className="text-sm text-gray-600 line-clamp-2">{theme.description}</p>
+            <p className="text-sm text-text-muted line-clamp-2">{theme.description}</p>
           </div>
         </div>
 
@@ -92,7 +92,8 @@ const copyToClipboard = (color: string) => {
             <motion.button
               key={i}
               whileTap={{ scale: 0.95 }}
-              onClick={() => copyToClipboard(String(color))}              className="text-xs font-mono px-2 py-1 rounded-md bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+              onClick={() => copyToClipboard(String(color))}
+              className="text-xs font-mono px-2 py-1 rounded-md bg-page-bg text-text-main border border-border-main hover:bg-card-bg transition-colors"
             >
               {color}
             </motion.button>
@@ -100,13 +101,13 @@ const copyToClipboard = (color: string) => {
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+        <div className="flex items-center justify-between pt-3 border-t border-border-main">
           <div className="flex items-center gap-1">
             {[...Array(5)].map((_, i) => (
               <FiStar
                 key={i}
                 size={14}
-                className={i < theme.popularity ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}
+                className={i < theme.popularity ? 'text-yellow-400 fill-yellow-400' : 'text-text-muted opacity-30'}
               />
             ))}
           </div>

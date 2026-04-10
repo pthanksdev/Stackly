@@ -50,7 +50,7 @@ export default function Pagination({
         whileTap={!isLoading ? { scale: 0.95 } : {}}
         onClick={() => !isLoading && onPageChange(currentPage - 1)}
         disabled={currentPage === 1 || isLoading}
-        className="p-2 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        className="p-2 rounded-lg border border-border-main text-text-muted hover:bg-card-bg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
       >
         <FiChevronLeft size={18} />
       </motion.button>
@@ -61,10 +61,10 @@ export default function Pagination({
           whileHover={!isLoading && page !== '...' ? { scale: 1.05 } : {}}
           whileTap={!isLoading && page !== '...' ? { scale: 0.95 } : {}}
           onClick={() => !isLoading && typeof page === 'number' && onPageChange(page)}
-          className={`min-w-[40px] h-10 px-3 rounded-lg text-sm font-medium transition-colors ${
+          className={`min-w-[40px] h-10 px-3 rounded-lg text-sm font-medium transition-colors border border-border-main ${
             currentPage === page
               ? 'bg-black text-white'
-              : 'text-gray-600 hover:bg-gray-100'
+              : 'text-text-muted hover:bg-card-bg'
           } ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
           style={currentPage === page ? { backgroundColor: '#d2b7ff', color: '#000' } : {}}
           disabled={page === '...' || isLoading}
@@ -78,7 +78,7 @@ export default function Pagination({
         whileTap={!isLoading ? { scale: 0.95 } : {}}
         onClick={() => !isLoading && onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages || isLoading}
-        className="p-2 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        className="p-2 rounded-lg border border-border-main text-text-muted hover:bg-card-bg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
       >
         <FiChevronRight size={18} />
       </motion.button>

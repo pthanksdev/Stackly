@@ -39,7 +39,7 @@ export default function HtmlIntroCard({
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       id="html-intro"
-      className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl overflow-hidden shadow-xl"
+      className="bg-gradient-to-br from-slate-900 to-slate-800 dark:from-black dark:to-slate-900 rounded-2xl overflow-hidden shadow-xl transition-all duration-500"
     >
       <div className="flex items-center justify-end gap-2 px-6 pt-4">
         <div className="flex items-center gap-1 bg-white/10 rounded-lg p-1 backdrop-blur">

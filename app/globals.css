@@ -1,4 +1,25 @@
 @import "tailwindcss";
+
+@theme {
+  --color-page-bg: #f8fafc;
+  --color-card-bg: #ffffff;
+  --color-header-bg: rgba(255, 255, 255, 0.9);
+  --color-sidebar-bg: #0a0a0a;
+  --color-text-main: #0f172a;
+  --color-text-muted: #64748b;
+  --color-border-main: #e2e8f0;
+
+  @media (prefers-color-scheme: dark) {
+    --color-page-bg: #020617;
+    --color-card-bg: #0f172a;
+    --color-header-bg: rgba(2, 6, 23, 0.9);
+    --color-sidebar-bg: #000000;
+    --color-text-main: #f8fafc;
+    --color-text-muted: #94a3b8;
+    --color-border-main: #1e293b;
+  }
+}
+
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;

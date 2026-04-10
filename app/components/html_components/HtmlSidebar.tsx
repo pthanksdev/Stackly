@@ -27,10 +27,10 @@ export default function HtmlSidebar({
       <div className="sticky top-24 space-y-4">
 
         {/* Progress bar */}
-        <div className="bg-white rounded-xl border border-gray-200 p-3">
+        <div className="bg-card-bg rounded-xl border border-border-main p-3 transition-colors duration-300">
           <div className="flex items-center justify-between mb-1">
-            <span className="text-xs font-medium text-gray-700">Progress</span>
-            <span className="text-xs font-semibold text-slate-600">
+            <span className="text-xs font-medium text-text-secondary">Progress</span>
+            <span className="text-xs font-semibold text-text-main">
               {activeSection}/{lessons.length}
             </span>
           </div>
@@ -49,10 +49,10 @@ export default function HtmlSidebar({
             whileTap={{ scale: 0.98 }}
             onClick={() => onNavigate(activeSection - 1)}
             disabled={isFirst}
-            className={`flex-1 flex items-center justify-center gap-1 px-2 py-1.5 rounded-lg text-xs font-medium ${
+            className={`flex-1 flex items-center justify-center gap-1 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors duration-300 ${
               isFirst
-                ? 'bg-slate-50 text-slate-400 cursor-not-allowed'
-                : 'bg-white border border-gray-200 hover:border-gray-300 text-slate-700'
+                ? 'bg-page-bg text-text-muted cursor-not-allowed border border-border-main'
+                : 'bg-card-bg border border-border-main hover:border-text-muted text-text-main'
             }`}
           >
             <FiArrowLeft size={14} /> Prev
@@ -62,10 +62,10 @@ export default function HtmlSidebar({
             whileTap={{ scale: 0.98 }}
             onClick={() => onNavigate(activeSection + 1)}
             disabled={isLast}
-            className={`flex-1 flex items-center justify-center gap-1 px-2 py-1.5 rounded-lg text-xs font-medium ${
+            className={`flex-1 flex items-center justify-center gap-1 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors duration-300 ${
               isLast
-                ? 'bg-slate-50 text-slate-400 cursor-not-allowed'
-                : 'bg-white border border-gray-200 hover:border-gray-300 text-slate-700'
+                ? 'bg-page-bg text-text-muted cursor-not-allowed border border-border-main'
+                : 'bg-card-bg border border-border-main hover:border-text-muted text-text-main'
             }`}
           >
             Next <FiArrowRight size={14} />
@@ -73,15 +73,15 @@ export default function HtmlSidebar({
         </div>
 
         {/* Course outline */}
-        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
-          <div className="p-3 border-b border-gray-100 bg-gradient-to-r from-slate-50 to-white">
+        <div className="bg-card-bg rounded-xl border border-border-main overflow-hidden shadow-sm transition-colors duration-300">
+          <div className="p-3 border-b border-border-main bg-gradient-to-r from-page-bg to-card-bg">
             <div className="flex items-center gap-2">
-              <div className="p-1.5 bg-slate-100 rounded-lg">
-                <FiList className="text-slate-600" size={16} />
+              <div className="p-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                <FiList className="text-text-muted" size={16} />
               </div>
               <div>
-                <h3 className="text-sm font-semibold text-gray-900">Course Outline</h3>
-                <p className="text-xs text-slate-500">{lessons.length} lessons</p>
+                <h3 className="text-sm font-semibold text-text-main">Course Outline</h3>
+                <p className="text-xs text-text-muted">{lessons.length} lessons</p>
               </div>
             </div>
           </div>
@@ -95,17 +95,17 @@ export default function HtmlSidebar({
               <div className="space-y-0.5">
                 <button
                   onClick={onScrollToIntro}
-                  className="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs hover:bg-slate-50"
+                  className="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                 >
                   <div className="w-1 h-1 bg-slate-400 rounded-full" />
-                  <span className="text-slate-600">What is HTML?</span>
+                  <span className="text-text-muted">What is HTML?</span>
                 </button>
                 <button
                   onClick={onScrollToStructure}
-                  className="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs hover:bg-slate-50"
+                  className="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                 >
                   <div className="w-1 h-1 bg-indigo-400 rounded-full" />
-                  <span className="text-slate-600">Page Structure</span>
+                  <span className="text-text-muted">Page Structure</span>
                 </button>
               </div>
             </div>
@@ -120,8 +120,8 @@ export default function HtmlSidebar({
                   <button
                     key={lesson.id}
                     onClick={() => onNavigate(lesson.id)}
-                    className={`w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs ${
-                      activeSection === lesson.id ? 'bg-slate-100' : 'hover:bg-slate-50'
+                    className={`w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs transition-colors ${
+                      activeSection === lesson.id ? 'bg-slate-100 dark:bg-slate-800' : 'hover:bg-slate-50 dark:hover:bg-slate-800/50'
                     }`}
                     style={{
                       borderLeft:
@@ -131,10 +131,10 @@ export default function HtmlSidebar({
                     }}
                   >
                     <span
-                      className="w-4 h-4 rounded flex items-center justify-center text-[10px] font-mono"
+                      className="w-4 h-4 rounded flex items-center justify-center text-[10px] font-mono transition-colors"
                       style={{
                         backgroundColor:
-                          activeSection === lesson.id ? `${lesson.color}20` : '#f1f5f9',
+                          activeSection === lesson.id ? `${lesson.color}20` : 'var(--color-border-main)',
                         color: lesson.color,
                       }}
                     >
@@ -142,13 +142,13 @@ export default function HtmlSidebar({
                     </span>
                     <div className="flex-1 text-left">
                       <div
-                        className={`font-medium truncate ${
-                          activeSection === lesson.id ? 'text-gray-900' : 'text-gray-700'
+                        className={`font-medium truncate transition-colors ${
+                          activeSection === lesson.id ? 'text-text-main' : 'text-text-secondary'
                         }`}
                       >
                         {lesson.title}
                       </div>
-                      <div className="text-[10px] text-slate-500 font-mono">{lesson.tag}</div>
+                      <div className="text-[10px] text-text-muted font-mono">{lesson.tag}</div>
                     </div>
                   </button>
                 ))}

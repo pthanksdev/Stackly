@@ -34,11 +34,11 @@ export default function CategoryFilter({
             transition={{ delay: index * 0.05 }}
             onClick={() => !isLoading && onCategoryChange(category.id)} // Disable when loading
             disabled={isLoading} // Disable button when loading
-            className="relative px-4 py-2 rounded-lg text-sm font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="relative px-4 py-2 rounded-lg text-sm font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed border border-border-main"
             style={{
               backgroundColor: isSelected ? category.color : 'transparent',
-              color: isSelected ? '#000' : '#64748b',
-              border: isSelected ? 'none' : '1px solid #e2e8f0'
+              color: isSelected ? '#000' : 'var(--color-text-muted)',
+              border: isSelected ? 'none' : '1px solid var(--color-border-main)'
             }}
             whileHover={!isLoading ? { scale: 1.05 } : {}}
             whileTap={!isLoading ? { scale: 0.95 } : {}}
