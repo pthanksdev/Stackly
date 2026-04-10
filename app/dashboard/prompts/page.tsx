@@ -30,10 +30,7 @@ export default function PromptEngineeringPage() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 100,
-        behavior: "smooth",
-      });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
       setActiveTab(sectionId);
     }
   };
@@ -129,6 +126,9 @@ export default function PromptEngineeringPage() {
           .hide-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
+          }
+          section {
+            scroll-margin-top: 100px;
           }
         `}</style>
 
