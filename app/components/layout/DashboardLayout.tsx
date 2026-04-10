@@ -19,8 +19,9 @@ export default function DashboardLayout({
   showBackButton = true 
 }: DashboardLayoutProps) {
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-page-bg transition-colors duration-300">
       <Sidebar />
+
       
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-auto">

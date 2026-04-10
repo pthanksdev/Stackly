@@ -245,9 +245,8 @@ export default function Sidebar() {
         variants={sidebarVariants}
         initial={false}
         animate={isOpen ? "open" : "closed"}
-        className="fixed md:relative h-screen bg-black text-white flex flex-col overflow-hidden z-50"
+        className="fixed md:relative h-screen bg-sidebar-bg text-text-main flex flex-col overflow-hidden z-50 transition-colors duration-300"
         style={{
-          backgroundColor: "#0a0a0a",
           boxShadow: isMobile && isOpen ? "0 0 20px rgba(0,0,0,0.5)" : "none",
         }}
       >
@@ -341,7 +340,7 @@ export default function Sidebar() {
                         <span
                           className="text-sm font-medium truncate"
                           style={{
-                            color: isActive ? "#fff" : "#94a3b8",
+                            color: isActive ? (isMobile ? "#fff" : "inherit") : "var(--color-text-muted)",
                           }}
                         >
                           {item.name}
@@ -356,7 +355,7 @@ export default function Sidebar() {
         </nav>
 
         {/* Footer */}
-        <div className="p-3 md:p-4 border-t border-gray-800">
+        <div className="p-3 md:p-4 border-t border-border-main transition-colors duration-300">
           <div
             className="flex items-center gap-4 px-3 md:px-4 py-3 rounded-xl transition-colors duration-200"
             onMouseEnter={() => !isMobile && setHoveredItem("footer")}

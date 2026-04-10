@@ -37,11 +37,11 @@ export default function ReactLessonCard({
           </span>
         </div>
         <h1
-          className="text-3xl md:text-4xl font-bold tracking-tight mb-2 text-slate-900"
+          className="text-3xl md:text-4xl font-bold tracking-tight mb-2 text-text-main"
         >
           {lesson.title}
         </h1>
-        <p className="text-sm md:text-base text-gray-600 max-w-2xl">{lesson.description}</p>
+        <p className="text-sm md:text-base text-text-muted max-w-2xl">{lesson.description}</p>
       </div>
 
       {/* Practice header row */}
@@ -53,7 +53,7 @@ export default function ReactLessonCard({
           >
             {lesson.id}
           </span>
-          <h2 className="text-sm font-semibold text-gray-700">Example Code</h2>
+          <h2 className="text-sm font-semibold text-text-secondary">Example Code</h2>
         </div>
         <div className="flex items-center gap-1">
           {lesson.id > 1 && (
@@ -71,7 +71,7 @@ export default function ReactLessonCard({
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => onNavigate(lesson.id + 1)}
-              className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700"
+              className="p-1.5 rounded-lg bg-card-bg border border-border-main hover:bg-slate-200 dark:hover:bg-slate-800 text-text-main"
             >
               <FiArrowRight size={16} />
             </motion.button>
@@ -80,15 +80,15 @@ export default function ReactLessonCard({
       </div>
 
       {/* Code card */}
-      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
+      <div className="bg-card-bg rounded-xl border border-border-main overflow-hidden shadow-md transition-colors duration-300">
         <div className="grid grid-cols-1 gap-4 p-5 mx-5">
           <div className="space-y-3">
             <div className="flex items-center justify-between gap-1.5">
               <div className="flex items-center gap-1.5">
-                <div className="p-1 bg-slate-100 rounded-lg">
-                  <FiCode className="text-slate-600" size={14} />
+                <div className="p-1 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                  <FiCode className="text-slate-600 dark:text-slate-400" size={14} />
                 </div>
-                <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider">
+                <h3 className="text-xs font-semibold text-text-main uppercase tracking-wider">
                   JSX / React Component
                 </h3>
               </div>
@@ -105,11 +105,11 @@ export default function ReactLessonCard({
 
             <div className="mt-4 flex items-center justify-between">
               <div className="flex flex-wrap gap-1 items-center">
-                <span className="text-[10px] font-mono text-slate-500">Concepts:</span>
+                <span className="text-[10px] font-mono text-text-muted">Concepts:</span>
                 {lesson.preview.content?.map((contentStr, idx) => (
                   <span
                     key={idx}
-                    className="text-[10px] px-2 py-0.5 bg-white border border-gray-300 rounded-full text-gray-700 font-mono"
+                    className="text-[10px] px-2 py-0.5 bg-card-bg border border-border-main rounded-full text-text-secondary font-mono transition-colors"
                   >
                     {contentStr}
                   </span>

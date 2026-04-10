@@ -21,7 +21,7 @@ export default function Header({ title, showBackButton = true }: HeaderProps) {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="bg-white border-b border-gray-200 sticky top-0 z-40 backdrop-blur-sm bg-white/90"
+      className="bg-header-bg border-b border-border-main sticky top-0 z-40 backdrop-blur-md transition-colors duration-300"
     >
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -32,7 +32,7 @@ export default function Header({ title, showBackButton = true }: HeaderProps) {
                 whileHover={{ scale: 1.05, x: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleBackToDashboard}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-600 hover:text-black hover:bg-gray-100 transition-all"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg text-text-muted hover:text-text-main hover:bg-black/5 dark:hover:bg-white/5 transition-all"
               >
                 <FiArrowLeft size={18} />
                 <span className="text-sm font-medium hidden sm:inline">Dashboard</span>
@@ -44,24 +44,25 @@ export default function Header({ title, showBackButton = true }: HeaderProps) {
                 className="w-2 h-8 rounded-full"
                 style={{ backgroundColor: '#d2b7ff' }}
               />
-              <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+              <h1 className="text-xl sm:text-2xl font-bold text-text-main">
                 {title}
               </h1>
             </div>
           </div>
 
+
           {/* Right section - Developer info */}
           <div className="flex items-center gap-6">
-            <div className="hidden md:flex items-center gap-2 text-sm text-gray-600">
+            <div className="hidden md:flex items-center gap-2 text-sm text-text-muted">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               <span>Dev Mode</span>
             </div>
             
             <div 
-              className="w-8 h-8 rounded-full flex items-center justify-center"
+              className="w-8 h-8 rounded-full flex items-center justify-center shadow-sm"
               style={{ backgroundColor: '#ffb7c5' }}
             >
-              <span className="text-sm font-bold text-black">PT</span>
+              <span className="text-sm font-bold text-black dark:text-gray-900">PT</span>
             </div>
           </div>
         </div>
