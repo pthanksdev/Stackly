@@ -86,8 +86,8 @@ export default function CSSCoursePage() {
             ))}
           </div>
 
-          <div className="text-center py-8 border-t border-gray-200">
-            <p className="text-sm text-slate-500 italic">
+          <div className="text-center py-12 border-t border-border-main transition-colors">
+            <p className="text-sm text-text-muted italic">
               "CSS is the paint, the polish, and the magic that turns structure into art."
             </p>
           </div>

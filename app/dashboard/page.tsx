@@ -59,14 +59,14 @@ export default function DashboardPage() {
     return (
       <DashboardLayout pageTitle="Project Overview" showBackButton={false}>
         <div className="space-y-16">
-          <div className="relative overflow-hidden rounded-3xl p-12 bg-gradient-to-br from-gray-900 to-gray-800">
+          <div className="relative overflow-hidden rounded-3xl p-12 bg-gradient-to-br from-page-bg to-card-bg border border-border-main animate-pulse">
             <div className="relative z-10 max-w-3xl">
-              <div className="h-8 w-32 bg-white/10 rounded-full mb-6" />
-              <div className="h-16 w-96 bg-white/10 rounded-lg mb-4" />
-              <div className="h-6 w-full max-w-2xl bg-white/10 rounded-lg mb-8" />
+              <div className="h-8 w-32 bg-border-main rounded-full mb-6" />
+              <div className="h-16 w-96 bg-border-main rounded-lg mb-4" />
+              <div className="h-6 w-full max-w-2xl bg-border-main rounded-lg mb-8" />
               <div className="flex gap-4">
-                <div className="h-12 w-32 bg-white/10 rounded-lg" />
-                <div className="h-12 w-48 bg-white/10 rounded-lg" />
+                <div className="h-12 w-32 bg-border-main rounded-lg" />
+                <div className="h-12 w-48 bg-border-main rounded-lg" />
               </div>
             </div>
           </div>
@@ -79,24 +79,24 @@ export default function DashboardPage() {
     <DashboardLayout pageTitle="Project Overview" showBackButton={false}>
       <div className="space-y-16">
             
-     <div className="relative rounded-3xl p-8 md:p-10 bg-gradient-to-br from-gray-50 to-white border border-gray-200 shadow-sm">
+     <div className="relative rounded-3xl p-8 md:p-10 bg-gradient-to-br from-page-bg to-card-bg border border-border-main shadow-sm transition-colors duration-300">
   <div className="relative z-10 max-w-3xl">
     {/* Simple version badge */}
-    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 mb-6 shadow-sm">
+    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card-bg border border-border-main mb-6 shadow-sm">
       <span className="w-2 h-2 rounded-full bg-green-400" />
-      <span className="text-sm font-medium text-gray-700">Stackly v1.0.0</span>
+      <span className="text-sm font-medium text-text-muted">Stackly v1.0.0</span>
     </div>
     
     {/* Simple title */}
-    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-main mb-6 leading-tight">
       Developer Dashboard
-      <span className="block text-2xl md:text-3xl text-gray-600 mt-2 font-normal">
+      <span className="block text-2xl md:text-3xl text-text-muted mt-2 font-normal">
         Architecture Guide
       </span>
     </h1>
     
     {/* Simple description */}
-    <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl">
+    <p className="text-lg md:text-xl text-text-muted mb-8 leading-relaxed max-w-2xl">
       A modern Next.js 16 application with TypeScript, TailwindCSS, and Framer Motion. 
       Built with consistency, reusability, and developer experience in mind.
     </p>
@@ -107,15 +107,15 @@ export default function DashboardPage() {
         href="https://github.com/pthanksdev/Stackly.git" 
         target="_blank" 
         rel="noopener noreferrer"
-        className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors shadow-md"
+        className="flex items-center gap-2 px-6 py-3 bg-text-main text-page-bg rounded-lg font-medium hover:opacity-90 transition-all shadow-md group border border-border-main"
       >
-        <FiGithub size={20} />
+        <FiGithub size={20} className="transition-transform group-hover:scale-110" />
         <span>View on GitHub</span>
         <FiChevronRight size={16} />
       </a>
       
-      <div className="flex items-center gap-2 px-6 py-3 bg-white text-gray-700 rounded-lg font-medium border border-gray-200 shadow-sm">
-        <FiCode size={18} className="text-gray-500" />
+      <div className="flex items-center gap-2 px-6 py-3 bg-card-bg text-text-main rounded-lg font-medium border border-border-main shadow-sm">
+        <FiCode size={18} className="text-text-muted" />
         <span>Created by pthanksdev</span>
       </div>
     </div>
@@ -129,12 +129,13 @@ export default function DashboardPage() {
         {/* Featured Courses Section - Now using regular div instead of SectionWrapper for immediate display */}
         <div className="space-y-6">
           <motion.h2 
-            className="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3"
+            className="text-3xl font-bold text-text-main mb-8 flex items-center gap-3"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
           >
             <FiBookmark className="text-[#ffb7c5]" />
             Featured Courses
+
             <motion.div 
               className="h-1 flex-1 bg-gradient-to-r from-[#ffb7c5] to-transparent rounded-full"
               initial={{ scaleX: 0 }}
@@ -160,7 +161,7 @@ export default function DashboardPage() {
                   <Link href={item.path}>
                     <FloatingCard delay={index * 0.5}>
                       <div 
-                        className="bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-xl transition-all cursor-pointer group"
+                        className="bg-card-bg rounded-2xl p-6 border border-border-main hover:shadow-xl transition-all cursor-pointer group"
                         style={{
                           boxShadow: `0 10px 30px -15px ${item.color}40`
                         }}
@@ -178,16 +179,16 @@ export default function DashboardPage() {
                             animate={{ x: [0, 5, 0] }}
                             transition={{ duration: 2, repeat: Infinity }}
                           >
-                            <FiChevronRight className="text-gray-400 group-hover:text-gray-600" size={20} />
+                            <FiChevronRight className="text-text-muted transition-colors group-hover:text-text-main" size={20} />
                           </motion.div>
                         </div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.name}</h3>
-                        <p className="text-sm text-gray-600">
+                        <h3 className="text-lg font-semibold text-text-main mb-2">{item.name}</h3>
+                        <p className="text-sm text-text-muted">
                           Master {item.name.replace(' Course', '').replace(' CSS', '')} with interactive lessons
                         </p>
                         
                         <motion.div 
-                          className="mt-4 h-1 bg-gray-100 rounded-full overflow-hidden"
+                          className="mt-4 h-1 bg-page-bg rounded-full overflow-hidden border border-border-main transition-colors"
                           initial={{ width: '0%' }}
                           whileHover={{ width: '100%' }}
                           transition={{ duration: 0.3 }}
@@ -223,7 +224,7 @@ export default function DashboardPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.05 }}
-                  className="bg-white rounded-xl p-6 border border-gray-200 text-center"
+                  className="bg-card-bg rounded-xl p-6 border border-border-main text-center transition-colors duration-300"
                 >
                   <motion.div
                     animate={{ 
@@ -238,11 +239,11 @@ export default function DashboardPage() {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: index * 0.2 + 0.3 }}
-                    className="text-2xl font-bold text-gray-900 mt-2"
+                    className="text-2xl font-bold text-text-main mt-2"
                   >
                     {stat.value}
                   </motion.div>
-                  <div className="text-sm text-gray-600">{stat.label}</div>
+                  <div className="text-sm text-text-muted">{stat.label}</div>
                 </motion.div>
               );
             })}
@@ -252,7 +253,7 @@ export default function DashboardPage() {
         {/* Color Palette Showcase */}
         <SectionWrapper>
           <motion.h2 
-            className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2"
+            className="text-2xl font-bold text-text-main mb-6 flex items-center gap-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
@@ -285,11 +286,11 @@ export default function DashboardPage() {
         {/* Architecture Quote */}
         <SectionWrapper>
           <motion.div 
-            className="bg-gradient-to-r from-gray-50 to-white rounded-2xl p-8 border border-gray-200 text-center"
+            className="bg-gradient-to-r from-page-bg to-card-bg rounded-2xl p-8 border border-border-main text-center transition-colors duration-300"
             whileHover={{ scale: 1.02 }}
           >
             <motion.p 
-              className="text-xl text-gray-700 italic"
+              className="text-xl text-text-main italic"
               animate={{ 
                 textShadow: ['0 0 0px rgba(0,0,0,0)', '0 0 10px rgba(183,255,202,0.5)', '0 0 0px rgba(0,0,0,0)']
               }}

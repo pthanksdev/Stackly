@@ -102,10 +102,10 @@ export default function ButtonsPage() {
               </svg>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">
+              <h1 className="text-2xl font-bold text-text-main">
                 Button Gallery
               </h1>
-              <p className="text-gray-600">
+              <p className="text-text-muted">
                 Beautiful, ready-to-use buttons with HTML/CSS and Tailwind code
               </p>
             </div>
@@ -115,10 +115,10 @@ export default function ButtonsPage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6 text-sm">
               <div className="flex items-center gap-2">
-                <span className="font-semibold text-gray-900">
+                <span className="font-semibold text-text-main">
                   {buttonData.length}
                 </span>
-                <span className="text-gray-600">Buttons</span>
+                <span className="text-text-muted">Buttons</span>
               </div>
             </div>
 

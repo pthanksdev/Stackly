@@ -434,7 +434,7 @@ export default function ComponentsPage() {
       <div className="space-y-6">
         
         {/* HEADER */}
-        <div className="bg-gradient-to-br from-purple-900 to-indigo-900 rounded-2xl p-6 text-white">
+        <div className="bg-gradient-to-br from-purple-900 to-indigo-900 dark:from-black dark:to-slate-950 rounded-2xl p-6 text-white transition-all duration-500 shadow-xl border border-white/5">
           <div className="flex items-center gap-3 mb-3">
             <div className="p-2 bg-white/20 rounded-xl">
               <FiBox size={28} />
@@ -455,16 +455,15 @@ export default function ComponentsPage() {
           />
         </div>
 
-        {/* CATEGORY FILTER */}
         <div className="flex flex-wrap gap-2">
           {categories.map(cat => (
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 border border-border-main hover:border-text-muted`}
               style={{
-                backgroundColor: selectedCategory === cat.id ? cat.color : '#f1f5f9',
-                color: selectedCategory === cat.id ? '#0a0a0a' : '#475569'
+                backgroundColor: selectedCategory === cat.id ? cat.color : 'var(--color-card-bg)',
+                color: selectedCategory === cat.id ? '#0a0a0a' : 'var(--color-text-main)'
               }}
             >
               {cat.name}
@@ -479,17 +478,17 @@ export default function ComponentsPage() {
               key={component.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-lg transition-all"
+              className="bg-card-bg rounded-xl border border-border-main overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
             >
               {/* Header */}
               <div 
-                className="px-4 py-3 border-b"
+                className="px-4 py-3 border-b border-border-main"
                 style={{ backgroundColor: `${component.color}15` }}
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="font-semibold text-gray-900">{component.name}</h3>
-                    <p className="text-xs text-gray-500 mt-0.5">{component.description}</p>
+                    <h3 className="font-semibold text-text-main">{component.name}</h3>
+                    <p className="text-xs text-text-muted mt-0.5">{component.description}</p>
                   </div>
                   <span 
                     className="text-xs px-2 py-1 rounded-full"
@@ -501,12 +500,12 @@ export default function ComponentsPage() {
               </div>
 
               {/* Preview */}
-              <div className="p-4 bg-gray-50 border-b">
+              <div className="p-4 bg-page-bg/50 border-b border-border-main transition-colors">
                 <div className="flex items-center gap-2 mb-2">
-                  <FiEye className="text-slate-500" size={14} />
-                  <span className="text-xs font-medium text-slate-600">PREVIEW</span>
+                  <FiEye className="text-text-muted" size={14} />
+                  <span className="text-xs font-medium text-text-secondary">PREVIEW</span>
                 </div>
-                <div className="bg-white rounded-lg p-4 border border-gray-200 flex items-center justify-center min-h-[120px]">
+                <div className="bg-white dark:bg-slate-100 rounded-lg p-4 border border-border-main flex items-center justify-center min-h-[120px] shadow-inner transition-colors">
                   <div dangerouslySetInnerHTML={{ __html: component.preview }} />
                 </div>
               </div>
@@ -515,8 +514,8 @@ export default function ComponentsPage() {
               <div className="p-4">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <FiCode className="text-slate-500" size={14} />
-                    <span className="text-xs font-medium text-slate-600">CODE</span>
+                    <FiCode className="text-text-muted" size={14} />
+                    <span className="text-xs font-medium text-text-secondary">CODE</span>
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
@@ -524,8 +523,8 @@ export default function ComponentsPage() {
                     onClick={() => copyToClipboard(component.code, component.id)}
                     className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
                     style={{
-                      backgroundColor: copiedId === component.id ? component.color : '#f1f5f9',
-                      color: copiedId === component.id ? '#0a0a0a' : '#475569'
+                      backgroundColor: copiedId === component.id ? component.color : 'var(--color-page-bg)',
+                      color: copiedId === component.id ? '#0a0a0a' : 'var(--color-text-main)'
                     }}
                   >
                     {copiedId === component.id ? (
@@ -547,15 +546,15 @@ export default function ComponentsPage() {
 
         {/* EMPTY STATE */}
         {filteredComponents.length === 0 && (
-          <div className="text-center py-12 bg-gray-50 rounded-xl">
-            <FiBox className="mx-auto text-gray-400 mb-3" size={48} />
-            <h3 className="text-lg font-medium text-gray-900">No components found</h3>
-            <p className="text-sm text-gray-500">Try a different category or search term</p>
+          <div className="text-center py-12 bg-card-bg border border-border-main rounded-xl transition-colors">
+            <FiBox className="mx-auto text-text-muted mb-3" size={48} />
+            <h3 className="text-lg font-medium text-text-main">No components found</h3>
+            <p className="text-sm text-text-muted">Try a different category or search term</p>
           </div>
         )}
 
         {/* FOOTER NOTE */}
-        <div className="text-center py-6 text-sm text-slate-500 border-t">
+        <div className="text-center py-6 text-sm text-text-muted border-t border-border-main transition-colors">
           <p>✨ {filteredComponents.length} components ready to copy • Built with Tailwind CSS</p>
         </div>
       </div>
