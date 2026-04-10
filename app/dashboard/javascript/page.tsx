@@ -93,7 +93,7 @@ export default function JavaScriptCoursePage() {
           </div>
 
           <div className="text-center py-12">
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-text-muted transition-colors">
               JavaScript brings your web pages to life. It&apos;s not just a language—it&apos;s the magic behind the web.
             </p>
           </div>

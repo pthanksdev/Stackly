@@ -103,12 +103,12 @@ export default function IconsGalleryPage() {
         />
 
         {/* Results count */}
-        <div className="flex justify-between items-center">
-          <p className="text-sm text-gray-600">
-            Showing <span className="font-semibold text-gray-900">{displayedIcons.length}</span> of{' '}
-            <span className="font-semibold text-gray-900">{filteredIcons.length}</span> icons
+        <div className="flex justify-between items-center transition-colors">
+          <p className="text-sm text-text-muted">
+            Showing <span className="font-semibold text-text-main">{displayedIcons.length}</span> of{' '}
+            <span className="font-semibold text-text-main">{filteredIcons.length}</span> icons
           </p>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-text-muted transition-colors">
             Page {currentPage} of {totalPages || 1}
           </p>
         </div>

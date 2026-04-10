@@ -86,7 +86,7 @@ export default function HTMLCoursePage() {
           </div>
 
           <div className="text-center py-8">
-            <p className="text-sm text-slate-500">HTML structures content, it doesn&apos;t &ldquo;think&rdquo;.</p>
+            <p className="text-sm text-text-muted">HTML structures content, it doesn&apos;t &ldquo;think&rdquo;.</p>
           </div>
         </div>
 
