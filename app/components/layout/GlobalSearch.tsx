@@ -8,11 +8,15 @@ import { useRouter } from 'next/navigation';
 import { components } from '../../dashboard/components/data';
 import { themes } from '../data/themes';
 import { cssLessons } from '../data/css';
+import { htmlLessons } from '../data/html';
+import { javascriptCourseData } from '../data/js';
+import { reactLessons } from '../data/react';
+import { tailwindLessons } from '../data/tailwindcss';
 
 export default function GlobalSearch() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<{ id: string | number, name: string, type: 'component' | 'theme' | 'lesson', path: string }[]>([]);
+  const [results, setResults] = useState<{ id: string | number, name: string, type: 'component' | 'theme' | 'lesson', category?: string, path: string }[]>([]);
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -32,11 +36,35 @@ export default function GlobalSearch() {
       .filter(t => t.name.toLowerCase().includes(lowerQuery) || t.description.toLowerCase().includes(lowerQuery))
       .map(t => ({ id: t.id, name: t.name, type: 'theme' as const, path: '/dashboard/themes' }));
 
-    const lessonResults = cssLessons
+    const cssResults = cssLessons
       .filter(l => l.title.toLowerCase().includes(lowerQuery) || l.description.toLowerCase().includes(lowerQuery))
-      .map(l => ({ id: l.id, name: l.title, type: 'lesson' as const, path: '/dashboard/css' }));
+      .map(l => ({ id: l.id, name: l.title, type: 'lesson' as const, category: 'CSS', path: '/dashboard/css' }));
 
-    setResults([...componentResults, ...themeResults, ...lessonResults].slice(0, 8));
+    const htmlResults = htmlLessons
+      .filter(l => l.title.toLowerCase().includes(lowerQuery) || l.description.toLowerCase().includes(lowerQuery))
+      .map(l => ({ id: l.id, name: l.title, type: 'lesson' as const, category: 'HTML', path: '/dashboard/html' }));
+
+    const jsResults = javascriptCourseData
+      .filter(l => l.title.toLowerCase().includes(lowerQuery) || l.description.toLowerCase().includes(lowerQuery))
+      .map(l => ({ id: l.id, name: l.title, type: 'lesson' as const, category: 'JavaScript', path: '/dashboard/javascript' }));
+
+    const reactResults = reactLessons
+      .filter(l => l.title.toLowerCase().includes(lowerQuery) || l.description.toLowerCase().includes(lowerQuery))
+      .map(l => ({ id: l.id, name: l.title, type: 'lesson' as const, category: 'React', path: '/dashboard/react' }));
+
+    const tailwindResults = tailwindLessons
+      .filter(l => l.title.toLowerCase().includes(lowerQuery) || l.description.toLowerCase().includes(lowerQuery))
+      .map(l => ({ id: l.id, name: l.title, type: 'lesson' as const, category: 'Tailwind', path: '/dashboard/tailwindcss' }));
+
+    setResults([
+      ...componentResults, 
+      ...themeResults, 
+      ...cssResults,
+      ...htmlResults,
+      ...jsResults,
+      ...reactResults,
+      ...tailwindResults
+    ].slice(0, 10));
   }, [query]);
 
   // Handle shortcut Ctrl+K
@@ -144,7 +172,9 @@ export default function GlobalSearch() {
                           </div>
                           <div className="text-left">
                             <h4 className="font-bold text-text-main group-hover:text-purple-400 transition-colors uppercase tracking-tight">{result.name}</h4>
-                            <p className="text-xs text-text-muted capitalize">{result.type} • {result.path.split('/').pop()}</p>
+                            <p className="text-xs text-text-muted capitalize">
+                              {result.category || result.type} • {result.type === 'lesson' ? 'Curriculum' : result.path.split('/').pop()}
+                            </p>
                           </div>
                         </div>
                         <FiArrowRight size={18} className="text-text-muted opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
