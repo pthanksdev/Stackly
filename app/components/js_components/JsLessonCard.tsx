@@ -82,7 +82,7 @@ export default function JsLessonCard({
 
       {/* Code card */}
       <div className="bg-card-bg rounded-xl border border-border-main overflow-hidden shadow-md transition-colors duration-300">
-        <div className="grid grid-cols-1 gap-4 p-5 mx-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-5 mx-5">
           <div className="space-y-3">
             <div className="flex items-center gap-1.5">
               <div className="p-1 bg-slate-100 dark:bg-slate-800 rounded-lg">
@@ -102,22 +102,6 @@ export default function JsLessonCard({
               <pre className="text-gray-100 whitespace-pre-wrap">
                 <code>{lesson.example}</code>
               </pre>
-            </div>
-
-            {/* Output Preview Section */}
-            <div className="mt-4 p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-800 scrollbar-hide">
-              <div className="flex items-center gap-1.5 mb-2">
-                <FiTerminal size={14} className="text-slate-500" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Live Result Preview</span>
-              </div>
-              <ul className="space-y-1.5">
-                {lesson.preview.content.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-[11px] text-text-muted">
-                    <span className="mt-1 w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
 
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-2">
@@ -140,6 +124,27 @@ export default function JsLessonCard({
                 <><FiCopy size={14} /> Copy Code</>
               )}
             </motion.button>
+          </div>
+
+          {/* RIGHT: Live Preview */}
+          <div className="space-y-3 text-white">
+            <div className="flex items-center gap-1.5">
+              <div className="p-1 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                <FiTerminal size={14} className="text-slate-600 dark:text-slate-400" />
+              </div>
+              <h3 className="text-xs font-semibold text-text-main uppercase tracking-wider">Live Result Preview</h3>
+            </div>
+            
+            <div className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-800 scrollbar-hide min-h-[180px]">
+              <ul className="space-y-2">
+                {lesson.preview.content.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-[11px] text-text-muted">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
