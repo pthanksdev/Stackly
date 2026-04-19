@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FiCode, FiInfo, FiCopy, FiCheck, FiArrowLeft, FiArrowRight } from 'react-icons/fi';
+import { FiCode, FiInfo, FiCopy, FiCheck, FiArrowLeft, FiArrowRight, FiTerminal } from 'react-icons/fi';
 import { JavaScriptConcept } from '../data/js';
 
 interface JsLessonCardProps {
@@ -98,10 +98,26 @@ export default function JsLessonCard({
               )}
             </div>
 
-            <div className="bg-gray-900 rounded-lg p-4 font-mono text-[10px] md:text-xs overflow-x-auto max-h-[250px] overflow-y-auto">
+            <div className="bg-gray-900 rounded-lg p-4 font-mono text-[10px] md:text-xs overflow-x-auto max-h-[250px] overflow-y-auto scrollbar-hide">
               <pre className="text-gray-100 whitespace-pre-wrap">
                 <code>{lesson.example}</code>
               </pre>
+            </div>
+
+            {/* Output Preview Section */}
+            <div className="mt-4 p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-800 scrollbar-hide">
+              <div className="flex items-center gap-1.5 mb-2">
+                <FiTerminal size={14} className="text-slate-500" />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Live Result Preview</span>
+              </div>
+              <ul className="space-y-1.5">
+                {lesson.preview.content.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-[11px] text-text-muted">
+                    <span className="mt-1 w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-2">

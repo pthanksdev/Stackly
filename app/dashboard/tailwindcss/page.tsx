@@ -505,7 +505,7 @@ export default function TailwindCoursePage() {
                         <h3 className="text-xs font-semibold text-text-main uppercase tracking-wider">Code Example</h3>
                       </div>
                       
-                      <div className="bg-gray-900 rounded-lg p-3 font-mono text-[10px] md:text-xs overflow-x-auto max-h-[200px] overflow-y-auto">
+                      <div className="bg-gray-900 rounded-lg p-3 font-mono text-[10px] md:text-xs overflow-x-auto max-h-[200px] overflow-y-auto scrollbar-hide">
                         <pre className="text-gray-100 whitespace-pre-wrap">
                           <code>{lesson.example}</code>
                         </pre>

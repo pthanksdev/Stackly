@@ -605,7 +605,17 @@ export const javascriptCourseData: JavaScriptConcept[] = [
     title: "Arrow Functions",
     description: "Arrow functions, introduced in ES6, provide an incredibly concise syntax for writing function expressions. Using the 'fat arrow' (`=>`) operator, they often eliminate the need for the `function` keyword and even curly braces or `return` if the logic is a single expression. Perhaps most critically, arrow functions do not have their own `this` context—instead, they 'inherit' the `this` value from their surrounding code block, effectively terminating the historic confusion of context binding in callbacks.",
     example: "const add = (a, b) => a + b;\n\n// Avec accolades\nconst saluer = nom => {\n  console.log(`Hello ${nom}`);\n};\n\n// Idéal pour les callbacks\n[1, 2, 3].map(n => n * 2);",
-    preview: { type: "js", content: ["const func = () => {}"] },
+    preview: { 
+      type: "js", 
+      content: [
+        "const add = (a, b) => a + b;",
+        "add(5, 5); // Returns 10",
+        "",
+        "// Concise syntax",
+        "// No 'function' keyword",
+        "// Implicit return for simple logic"
+      ] 
+    },
     category: "functions",
     level: "intermediate",
     color: "#d2b7ff"
@@ -615,7 +625,17 @@ export const javascriptCourseData: JavaScriptConcept[] = [
     title: "Array Methods (Map/Filter)",
     description: "Modern JavaScript champions a 'declarative' style of programming, particularly when handling datasets through powerful array methods like `.map()` and `.filter()`. These methods iterate over each element of an array, applying a transformation or check without needing manual `for` loops. While `.map()` returns a new array of the same length containing transformed values, `.filter()` returns a potentially smaller subset of values that passed a specific logic test, making data processing remarkably elegant and readable.",
     example: "const numbers = [1, 2, 3, 4, 5];\n\n// map: Transforme\nconst doubles = numbers.map(n => n * 2);\n\n// filter: Filtre\nconst evens = numbers.filter(n => n % 2 === 0);\n\n// reduce: Accumule\nconst sum = numbers.reduce((acc, curr) => acc + curr, 0);",
-    preview: { type: "js", content: [".map()", ".filter()", ".reduce()"] },
+    preview: { 
+      type: "js", 
+      content: [
+        "const prices = [10, 20, 30];",
+        "const tax = prices.map(p => p * 1.2);",
+        "// Result: [12, 24, 36]",
+        "",
+        "const cheap = prices.filter(p => p < 25);",
+        "// Result: [10, 20]"
+      ] 
+    },
     category: "arrays",
     level: "intermediate",
     color: "#b7ffca"
@@ -625,7 +645,17 @@ export const javascriptCourseData: JavaScriptConcept[] = [
     title: "Promises",
     description: "A `Promise` acts as a placeholder for a value that is currently unknown but will eventually be available (resolved) or fail (rejected). This is the absolute cornerstone of asynchronous programming in JavaScript—essential for tasks like fetching server data or waiting for a timer without freezing the entire browser UI. A Promise starts in a 'pending' state and eventually transitions to either 'fulfilled' (giving you the data) or 'rejected' (giving you the error), allowing you to chain logic via `.then()` and `.catch()`.",
     example: "const fetchData = new Promise((resolve, reject) => {\n  setTimeout(() => resolve(\"Data loaded!\"), 1000);\n});\n\nfetchData\n  .then(data => console.log(data))\n  .catch(err => console.error(err));",
-    preview: { type: "js", content: ["resolve()", "reject()", ".then().catch()"] },
+    preview: { 
+      type: "js", 
+      content: [
+        "new Promise((res) => {",
+        "  setTimeout(() => res('Done!'), 1000);",
+        "});",
+        "",
+        "// Handles background tasks",
+        "// Non-blocking operations"
+      ] 
+    },
     category: "control",
     level: "advanced",
     color: "#c5e6ff"
@@ -635,7 +665,18 @@ export const javascriptCourseData: JavaScriptConcept[] = [
     title: "Async / Await",
     description: "The `async` and `await` keywords are a form of 'syntactic sugar' built on top of Promises, designed to make asynchronous network requests look and feel exactly like simple synchronous code. By marking a function as `async`, you gain the power to use `await`, which effectively tells the engine to pause execution of that specific function until a Promise resolves, then beautifully continue on with the result. This dramatically reduces the complexity of 'callback hell' and makes error handling via `try...catch` completely intuitive.",
     example: "async function getUser() {\n  try {\n    const response = await fetch('/api/user');\n    const data = await response.json();\n    console.log(data);\n  } catch (err) {\n    console.error(\"Erreur:\", err);\n  }\n}",
-    preview: { type: "js", content: ["async function", "await", "try...catch"] },
+    preview: { 
+      type: "js", 
+      content: [
+        "async function start() {",
+        "  const res = await apiCall();",
+        "  console.log(res);",
+        "}",
+        "",
+        "// Cleaner async code",
+        "// Sequential logic flow"
+      ] 
+    },
     category: "control",
     level: "advanced",
     color: "#c5e6ff"
@@ -645,7 +686,17 @@ export const javascriptCourseData: JavaScriptConcept[] = [
     title: "Fetch API",
     description: "The `fetch()` API is the modern browser's interface for executing network requests to external servers. It replaces the old, clunky `XMLHttpRequest` with a clean, Promise-based system. When you 'fetch' a URL, you receive a Response object; you then typically call `response.json()` to parse that raw packet stream into a usable JavaScript object. It is the primary tool used by frontend developers to integrate third-party APIs like weather data, payment processors, or database backends.",
     example: "fetch('https://jsonplaceholder.typicode.com/posts/1')\n  .then(response => {\n    if (!response.ok) throw new Error('Network response was not ok');\n    return response.json();\n  })\n  .then(data => console.log(data))\n  .catch(error => console.error('Fetch error:', error));",
-    preview: { type: "js", content: ["fetch(url)", "response.json()"] },
+    preview: { 
+      type: "js", 
+      content: [
+        "fetch('https://api.com/data')",
+        "  .then(res => res.json())",
+        "  .then(data => console.log(data));",
+        "",
+        "// Native browser API",
+        "// Standard for XHR requests"
+      ] 
+    },
     category: "dom",
     level: "advanced",
     color: "#ffb7c5"
@@ -655,7 +706,16 @@ export const javascriptCourseData: JavaScriptConcept[] = [
     title: "Destructuring",
     description: "Destructuring is a concise ES6 specialized syntax that allows you to 'unpack' values from arrays or properties from objects directly into distinct, standalone variables. Instead of writing separate repetitive lines of code to extract user profile data, you can capture multiple fields in a single line using curly braces `{}` for objects or square brackets `[]` for arrays. This leads to significantly cleaner, more expressive code, and is used extensively in modern frameworks like React for managing component props and state.",
     example: "const user = { nom: 'Alice', age: 25, ville: 'Paris' };\nconst { nom, age } = user;\n\nconst couleurs = ['Rouge', 'Bleu', 'Vert'];\nconst [primaire, secondaire] = couleurs;",
-    preview: { type: "js", content: ["{ a, b } = obj", "[x, y] = arr"] },
+    preview: { 
+      type: "js", 
+      content: [
+        "const { name, age } = user;",
+        "const [first, last] = names;",
+        "",
+        "// Rapidly extract properties",
+        "// Less boilerplate code"
+      ] 
+    },
     category: "variables",
     level: "intermediate",
     color: "#d2b7ff"
@@ -665,7 +725,17 @@ export const javascriptCourseData: JavaScriptConcept[] = [
     title: "Classes & OOP",
     description: "The `class` keyword serves as a blueprint for creating objects that share similar properties and behaviors, bringing the structured world of Object-Oriented Programming (OOP) to JavaScript. Using `constructor()` functions and the `new` keyword, you can instantiate unique objects while maintaining central logic for methods. Perhaps most powerfully, classes support 'inheritance' via `extends`, allowing you to create specialized sub-classes (like a Dog inheriting from Animal) that share foundational code while adding unique traits.",
     example: "class Animal {\n  constructor(name) {\n    this.name = name;\n  }\n  parler() {\n    return `${this.name} fait du bruit.`;\n  }\n}\n\nclass Chien extends Animal {\n  parler() {\n    return `${this.name} aboie.`;\n  }\n}\n\nconst rex = new Chien('Rex');\nconsole.log(rex.parler());",
-    preview: { type: "js", content: ["class", "constructor()", "extends"] },
+    preview: { 
+      type: "js", 
+      content: [
+        "class Car {",
+        "  constructor(brand) { this.brand = brand; }",
+        "}",
+        "",
+        "// Blueprints for objects",
+        "// Reusable prototypes"
+      ] 
+    },
     category: "functions",
     level: "advanced",
     color: "#d2b7ff"
