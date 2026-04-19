@@ -102,7 +102,7 @@ export default function CssLessonCard({
               </span>
             </div>
 
-            <div className="bg-gray-900 rounded-lg p-4 font-mono text-xs md:text-sm overflow-x-auto max-h-[300px] overflow-y-auto">
+            <div className="bg-gray-900 rounded-lg p-4 font-mono text-xs md:text-sm overflow-x-auto max-h-[300px] overflow-y-auto scrollbar-hide">
               <pre className="text-gray-100 whitespace-pre-wrap">
                 <code>{lesson.example}</code>
               </pre>
