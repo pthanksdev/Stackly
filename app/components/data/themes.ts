@@ -549,6 +549,46 @@ export const themes: ColorPalette[] = [
     colors: ["#e0e0e0", "#bdbdbd", "#9e9e9e", "#757575", "#616161"],
     popularity: 3,
   },
+  {
+    id: "65",
+    name: "Aurora Borealis",
+    category: "modern",
+    description: "Shimmering greens and deep purples inspired by the northern lights.",
+    colors: ["#12100e", "#2b4141", "#0eb1d2", "#2dffdf", "#80ff72"],
+    popularity: 5,
+  },
+  {
+    id: "66",
+    name: "Cyberpunk Gold",
+    category: "dark",
+    description: "High-contrast black, gold, and vibrant yellow for a tech-heavy look.",
+    colors: ["#000000", "#1a1a1a", "#ffd700", "#ffcc00", "#ffff00"],
+    popularity: 5,
+  },
+  {
+    id: "67",
+    name: "Deep Space",
+    category: "dark",
+    description: "Vast indigo and charcoal tones with pinpoints of bright starlight.",
+    colors: ["#050a14", "#0f172a", "#1e293b", "#334155", "#f8fafc"],
+    popularity: 4,
+  },
+  {
+    id: "68",
+    name: "Coffee Shop",
+    category: "vintage",
+    description: "Warm, roasted browns and creamy whites for a cozy cafe atmosphere.",
+    colors: ["#3c2f2f", "#4b3832", "#854442", "#be9b7b", "#fff4e6"],
+    popularity: 4,
+  },
+  {
+    id: "69",
+    name: "Lavender Sky",
+    category: "pastel",
+    description: "Soft violet gradients and airy pinks from a dreamy sunset.",
+    colors: ["#f3e5f5", "#e1bee7", "#ce93d8", "#f8bbd0", "#f48fb1"],
+    popularity: 5,
+  },
 ];
 
 export const categories = [
