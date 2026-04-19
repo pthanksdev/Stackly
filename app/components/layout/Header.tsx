@@ -1,8 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FiArrowLeft, FiGithub, FiPhone, FiCalendar } from 'react-icons/fi';
+import { FiArrowLeft, FiGithub, FiPhone, FiCalendar, FiSearch } from 'react-icons/fi';
 import { useRouter } from 'next/navigation';
+import GlobalSearch from './GlobalSearch';
 
 interface HeaderProps {
   title: string;
@@ -26,7 +27,7 @@ export default function Header({ title, showBackButton = true }: HeaderProps) {
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Left section - Back button and title */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-1">
             {showBackButton && (
               <motion.button
                 whileHover={{ scale: 1.05, x: -2 }}
@@ -44,15 +45,19 @@ export default function Header({ title, showBackButton = true }: HeaderProps) {
                 className="w-2 h-8 rounded-full"
                 style={{ backgroundColor: '#d2b7ff' }}
               />
-              <h1 className="text-xl sm:text-2xl font-bold text-text-main">
+              <h1 className="text-xl sm:text-2xl font-bold text-text-main whitespace-nowrap overflow-hidden text-ellipsis max-w-[150px] sm:max-w-none">
                 {title}
               </h1>
             </div>
           </div>
 
+          {/* Center Search - Visible on Desktop */}
+          <div className="hidden lg:flex flex-1 justify-center max-w-md mx-8">
+            <GlobalSearch />
+          </div>
 
           {/* Right section - Developer info */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 flex-1 justify-end">
             <div className="hidden md:flex items-center gap-2 text-sm text-text-muted">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               <span>Dev Mode</span>
