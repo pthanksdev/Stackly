@@ -114,7 +114,7 @@ export default function CssSidebar({
               <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider px-2 mb-1">
                 All Lessons ({lessons.length})
               </div>
-              <div className="space-y-0.5 max-h-[400px] overflow-y-auto pr-1">
+              <div className="space-y-0.5 max-h-[400px] overflow-y-auto pr-1 scrollbar-hide">
                 {lessons.map((lesson) => (
                   <button
                     key={lesson.id}

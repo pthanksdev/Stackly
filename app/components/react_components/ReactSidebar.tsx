@@ -118,7 +118,7 @@ export default function ReactSidebar({
               <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider px-2 mb-1">
                 React Concepts ({lessons.length})
               </div>
-              <div className="space-y-0.5 max-h-[400px] overflow-y-auto">
+              <div className="space-y-0.5 max-h-[400px] overflow-y-auto scrollbar-hide">
                 {lessons.map((lesson) => (
                   <button
                     key={lesson.id}
