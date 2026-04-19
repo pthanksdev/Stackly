@@ -15,12 +15,23 @@ import DashboardLayout from '../../components/layout/DashboardLayout';
 // ============================================
 // COMPONENTS DATA
 // ============================================
+// ============================================
+// COMPONENTS DATA
+// ============================================
+type Framework = 'html' | 'react' | 'nextjs' | 'typescript';
+
+interface ComponentVersion {
+  framework: Framework;
+  label: string;
+  code: string;
+}
+
 interface ComponentItem {
   id: number;
   name: string;
-  category: 'buttons' | 'cards' | 'forms' | 'navbars' | 'footers' | 'sidebars' | 'headers' | 'modals' | 'alerts' | 'badges';
+  category: 'buttons' | 'cards' | 'forms' | 'navbars' | 'footers' | 'sidebars' | 'headers' | 'modals' | 'alerts' | 'badges' | 'hooks' | 'next-api';
   description: string;
-  code: string;
+  versions: ComponentVersion[];
   preview: string;
   color: string;
 }
@@ -31,381 +42,241 @@ const components: ComponentItem[] = [
     id: 1,
     name: "Primary Button",
     category: 'buttons',
-    description: "Standard primary button for main actions",
-    code: `<button class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+    description: "Standard action button with various implementations",
+    versions: [
+      {
+        framework: 'html',
+        label: 'HTML/Tailwind',
+        code: `<button class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
   Click me
-</button>`,
+</button>`
+      },
+      {
+        framework: 'react',
+        label: 'React',
+        code: `const Button = ({ children, onClick }) => (
+  <button 
+    onClick={onClick}
+    className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors"
+  >
+    {children}
+  </button>
+);`
+      },
+      {
+        framework: 'typescript',
+        label: 'TypeScript',
+        code: `interface ButtonProps {
+  children: React.ReactNode;
+  onClick?: () => void;
+}
+
+const Button: React.FC<ButtonProps> = ({ children, onClick }) => (
+  <button 
+    onClick={onClick}
+    className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors"
+  >
+    {children}
+  </button>
+);`
+      }
+    ],
     preview: `<button class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
   Click me
 </button>`,
     color: '#c5e6ff'
   },
-  {
-    id: 2,
-    name: "Outline Button",
-    category: 'buttons',
-    description: "Elegant outline button for secondary actions",
-    code: `<button class="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-2 px-4 rounded-lg transition-colors">
-  Outline Button
-</button>`,
-    preview: `<button class="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-2 px-4 rounded-lg transition-colors">
-  Outline Button
-</button>`,
-    color: '#c5e6ff'
-  },
-  {
-    id: 3,
-    name: "Gradient Button",
-    category: 'buttons',
-    description: "Eye-catching gradient button",
-    code: `<button class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium py-2 px-4 rounded-lg transition-all shadow-lg">
-  Gradient Button
-</button>`,
-    preview: `<button class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium py-2 px-4 rounded-lg transition-all shadow-lg">
-  Gradient Button
-</button>`,
-    color: '#c5e6ff'
-  },
-  {
-    id: 4,
-    name: "Icon Button",
-    category: 'buttons',
-    description: "Button with icon for better UX",
-    code: `<button class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors flex items-center gap-2">
-  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-  </svg>
-  Save Changes
-</button>`,
-    preview: `<button class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors flex items-center gap-2">
-  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-  </svg>
-  Save Changes
-</button>`,
-    color: '#c5e6ff'
-  },
-
+  
   // ========== CARDS ==========
   {
     id: 5,
-    name: "Product Card",
+    name: "Modern Card",
     category: 'cards',
-    description: "Beautiful product card with image and price",
-    code: `<div class="max-w-sm rounded-xl overflow-hidden shadow-lg bg-white">
-  <img class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop" alt="Product">
-  <div class="p-6">
-    <h3 class="font-bold text-xl mb-2">Premium Watch</h3>
-    <p class="text-gray-700 text-base mb-4">Elegant timepiece with leather strap</p>
-    <div class="flex items-center justify-between">
-      <span class="text-2xl font-bold text-gray-900">$299</span>
-      <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm">
-        Add to Cart
-      </button>
-    </div>
+    description: "Versatile card component with clean aesthetics",
+    versions: [
+      {
+        framework: 'html',
+        label: 'HTML/Tailwind',
+        code: `<div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+  <h3 class="text-lg font-bold">Standard Card</h3>
+  <p class="text-gray-500 mt-2">Perfect for dashboard widgets.</p>
+</div>`
+      },
+      {
+        framework: 'typescript',
+        label: 'TypeScript',
+        code: `interface CardProps {
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+}
+
+const Card: React.FC<CardProps> = ({ title, children, className = "" }) => (
+  <div className={\`bg-white rounded-2xl shadow-sm border border-gray-100 p-6 \${className}\`}>
+    <h3 className="text-lg font-bold text-slate-800">{title}</h3>
+    <div className="mt-2 text-slate-600">{children}</div>
   </div>
-</div>`,
-    preview: `<div class="max-w-sm rounded-xl overflow-hidden shadow-lg bg-white">
-  <img class="w-full h-32 object-cover" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=200&fit=crop" alt="Product">
-  <div class="p-4">
-    <h3 class="font-bold text-lg mb-1">Premium Watch</h3>
-    <p class="text-gray-600 text-sm mb-2">Elegant timepiece</p>
-    <div class="flex items-center justify-between">
-      <span class="text-xl font-bold">$299</span>
-      <button class="bg-blue-600 text-white px-3 py-1 rounded text-xs">Add</button>
-    </div>
-  </div>
-</div>`,
-    color: '#d2b7ff'
-  },
-  {
-    id: 6,
-    name: "Profile Card",
-    category: 'cards',
-    description: "User profile card with avatar and stats",
-    code: `<div class="max-w-sm rounded-xl overflow-hidden shadow-lg bg-white p-6 text-center">
-  <img class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop" alt="Profile">
-  <h3 class="font-bold text-xl mb-1">John Doe</h3>
-  <p class="text-gray-600 mb-4">Product Designer</p>
-  <div class="flex justify-center gap-4 mb-4">
-    <div>
-      <span class="font-bold text-lg">2.5k</span>
-      <p class="text-gray-500 text-sm">Followers</p>
-    </div>
-    <div>
-      <span class="font-bold text-lg">345</span>
-      <p class="text-gray-500 text-sm">Following</p>
-    </div>
-  </div>
-  <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg w-full">
-    Follow
-  </button>
-</div>`,
-    preview: `<div class="max-w-sm rounded-xl overflow-hidden shadow-lg bg-white p-4 text-center">
-  <img class="w-16 h-16 rounded-full mx-auto mb-2 object-cover" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" alt="Profile">
-  <h3 class="font-bold text-lg">John Doe</h3>
-  <p class="text-gray-600 text-sm mb-2">Designer</p>
-  <div class="flex justify-center gap-3 mb-3">
-    <div><span class="font-bold">2.5k</span><p class="text-xs">Followers</p></div>
-    <div><span class="font-bold">345</span><p class="text-xs">Following</p></div>
-  </div>
-  <button class="bg-blue-600 text-white px-4 py-1 rounded text-sm w-full">Follow</button>
-</div>`,
+);`
+      }
+    ],
+    preview: `<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+      <h3 class="font-bold text-gray-800">Preview Card</h3>
+      <p class="text-xs text-gray-400 mt-1">Design token visualization</p>
+    </div>`,
     color: '#d2b7ff'
   },
 
-  // ========== FORMS ==========
+  // ========== HOOKS ==========
   {
-    id: 7,
-    name: "Login Form",
-    category: 'forms',
-    description: "Clean login form with email and password",
-    code: `<div class="max-w-md mx-auto bg-white p-8 rounded-xl shadow-lg">
-  <h2 class="text-2xl font-bold mb-6 text-center">Welcome Back</h2>
-  <form>
-    <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-      <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="your@email.com">
-    </div>
-    <div class="mb-6">
-      <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
-      <input type="password" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="••••••••">
-    </div>
-    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors">
-      Sign In
-    </button>
-  </form>
-</div>`,
-    preview: `<div class="max-w-sm mx-auto bg-white p-4 rounded-xl shadow-lg">
-  <h2 class="text-xl font-bold mb-3 text-center">Login</h2>
-  <input type="email" placeholder="Email" class="w-full px-3 py-2 border rounded-lg mb-2 text-sm" value="user@test.com">
-  <input type="password" placeholder="Password" class="w-full px-3 py-2 border rounded-lg mb-3 text-sm" value="123456">
-  <button class="w-full bg-blue-600 text-white py-2 rounded-lg text-sm">Sign In</button>
-</div>`,
+    id: 101,
+    name: "useLocalStorage",
+    category: 'hooks',
+    description: "Sync state with localStorage automatically",
+    versions: [
+      {
+        framework: 'react',
+        label: 'React JS',
+        code: `import { useState, useEffect } from 'react';
+
+function useLocalStorage(key, initialValue) {
+  const [value, setValue] = useState(() => {
+    const saved = localStorage.getItem(key);
+    return saved ? JSON.parse(saved) : initialValue;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+
+  return [value, setValue];
+}`
+      },
+      {
+        framework: 'typescript',
+        label: 'TypeScript',
+        code: `import { useState, useEffect } from 'react';
+
+function useLocalStorage<T>(key: string, initialValue: T): [T, (val: T) => void] {
+  const [value, setValue] = useState<T>(() => {
+    if (typeof window === 'undefined') return initialValue;
+    const saved = localStorage.getItem(key);
+    return saved ? JSON.parse(saved) : initialValue;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+
+  return [value, setValue];
+}`
+      }
+    ],
+    preview: `<div class="text-xs font-mono bg-slate-100 p-2 rounded">
+      Persistent State: 0ms
+    </div>`,
     color: '#ffb7c5'
   },
+  
+  // ========== REACT SPECIFIC ==========
   {
-    id: 8,
-    name: "Signup Form",
-    category: 'forms',
-    description: "Complete signup form with name, email, password",
-    code: `<div class="max-w-md mx-auto bg-white p-8 rounded-xl shadow-lg">
-  <h2 class="text-2xl font-bold mb-6 text-center">Create Account</h2>
-  <form>
-    <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
-      <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="John Doe">
-    </div>
-    <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-      <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="john@example.com">
-    </div>
-    <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
-      <input type="password" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="••••••••">
-    </div>
-    <div class="mb-6">
-      <label class="block text-gray-700 text-sm font-bold mb-2">Confirm Password</label>
-      <input type="password" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="••••••••">
-    </div>
-    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-colors">
-      Sign Up
-    </button>
-  </form>
-</div>`,
-    preview: `<div class="max-w-sm mx-auto bg-white p-4 rounded-xl shadow-lg">
-  <h2 class="text-xl font-bold mb-3 text-center">Sign Up</h2>
-  <input type="text" placeholder="Name" class="w-full px-3 py-2 border rounded-lg mb-2 text-sm" value="John">
-  <input type="email" placeholder="Email" class="w-full px-3 py-2 border rounded-lg mb-2 text-sm" value="john@test.com">
-  <input type="password" placeholder="Password" class="w-full px-3 py-2 border rounded-lg mb-3 text-sm" value="123456">
-  <button class="w-full bg-green-600 text-white py-2 rounded-lg text-sm">Create</button>
-</div>`,
+    id: 100,
+    name: "Counter Hook",
+    category: 'hooks',
+    description: "Type-safe custom hook for managing numeric state",
+    versions: [
+      {
+        framework: 'react',
+        label: 'React JS',
+        code: `import { useState } from 'react';
+
+export const useCounter = (initial = 0) => {
+  const [count, setCount] = useState(initial);
+  const increment = () => setCount(prev => prev + 1);
+  const decrement = () => setCount(prev => prev - 1);
+  return { count, increment, decrement };
+};`
+      },
+      {
+        framework: 'typescript',
+        label: 'TypeScript',
+        code: `import { useState } from 'react';
+
+export const useCounter = (initial: number = 0) => {
+  const [count, setCount] = useState<number>(initial);
+  const increment = () => setCount((prev) => prev + 1);
+  const decrement = () => setCount((prev) => prev - 1);
+  return { count, increment, decrement };
+};`
+      }
+    ],
+    preview: `<div class="flex items-center gap-4">
+      <button class="px-3 py-1 bg-gray-200 rounded text-black">-</button>
+      <span class="font-bold">0</span>
+      <button class="px-3 py-1 bg-gray-200 rounded text-black">+</button>
+    </div>`,
     color: '#ffb7c5'
   },
 
-  // ========== NAVBARS ==========
+  // ========== NEXT.JS SPECIFIC ==========
   {
-    id: 9,
-    name: "Simple Navbar",
-    category: 'navbars',
-    description: "Clean navigation bar with links",
-    code: `<nav class="bg-white shadow-lg">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="flex justify-between items-center h-16">
-      <div class="flex items-center gap-8">
-        <h1 class="text-xl font-bold text-gray-800">Logo</h1>
-        <div class="hidden md:flex gap-6">
-          <a href="#" class="text-gray-600 hover:text-gray-900">Home</a>
-          <a href="#" class="text-gray-600 hover:text-gray-900">About</a>
-          <a href="#" class="text-gray-600 hover:text-gray-900">Services</a>
-          <a href="#" class="text-gray-600 hover:text-gray-900">Contact</a>
-        </div>
-      </div>
-      <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700">
-        Sign In
-      </button>
-    </div>
-  </div>
-</nav>`,
-    preview: `<nav class="bg-white shadow-lg rounded-lg">
-  <div class="px-3 py-2 flex justify-between items-center">
-    <div class="flex items-center gap-4">
-      <span class="font-bold">Logo</span>
-      <div class="flex gap-3 text-sm">
-        <span class="text-gray-600">Home</span>
-        <span class="text-gray-600">About</span>
-      </div>
-    </div>
-    <button class="bg-blue-600 text-white px-3 py-1 rounded text-xs">Sign In</button>
-  </div>
-</nav>`,
+    id: 200,
+    name: "Next.js API Handle",
+    category: 'next-api',
+    description: "Standard Next.js Route Handler for JSON responses",
+    versions: [
+      {
+        framework: 'nextjs',
+        label: 'Next.js App Router',
+        code: `import { NextResponse } from 'next/server';
+
+export async function GET() {
+  return NextResponse.json({ 
+    message: 'Hello from Stackly API',
+    status: 200 
+  });
+}`
+      },
+      {
+        framework: 'typescript',
+        label: 'TypeScript',
+        code: `import { NextResponse } from 'next/server';
+
+export async function GET(): Promise<NextResponse> {
+  const data = { 
+    message: 'Hello from Stackly API',
+    status: 200 
+  };
+  
+  return NextResponse.json(data);
+}`
+      }
+    ],
+    preview: `<div class="p-3 bg-gray-900 rounded text-green-400 font-mono text-xs">
+      { "message": "Hello from Stackly API" }
+    </div>`,
     color: '#b7ffca'
   },
-
-  // ========== FOOTERS ==========
-  {
-    id: 10,
-    name: "Simple Footer",
-    category: 'footers',
-    description: "Clean footer with links and copyright",
-    code: `<footer class="bg-gray-900 text-white py-8">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div>
-        <h3 class="font-bold text-lg mb-4">About</h3>
-        <p class="text-gray-400 text-sm">Making web development accessible to everyone.</p>
-      </div>
-      <div>
-        <h3 class="font-bold text-lg mb-4">Links</h3>
-        <ul class="space-y-2 text-sm text-gray-400">
-          <li><a href="#" class="hover:text-white">Home</a></li>
-          <li><a href="#" class="hover:text-white">About</a></li>
-          <li><a href="#" class="hover:text-white">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="font-bold text-lg mb-4">Resources</h3>
-        <ul class="space-y-2 text-sm text-gray-400">
-          <li><a href="#" class="hover:text-white">Blog</a></li>
-          <li><a href="#" class="hover:text-white">FAQ</a></li>
-          <li><a href="#" class="hover:text-white">Support</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="font-bold text-lg mb-4">Legal</h3>
-        <ul class="space-y-2 text-sm text-gray-400">
-          <li><a href="#" class="hover:text-white">Privacy</a></li>
-          <li><a href="#" class="hover:text-white">Terms</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-      © 2024 Your Company. All rights reserved.
-    </div>
-  </div>
-</footer>`,
-    preview: `<footer class="bg-gray-900 text-white p-4 rounded-lg">
-  <div class="grid grid-cols-2 gap-4 mb-3">
-    <div><h4 class="font-bold text-sm">About</h4><p class="text-xs text-gray-400">Making web dev accessible</p></div>
-    <div><h4 class="font-bold text-sm">Links</h4><ul class="text-xs text-gray-400"><li>Home</li><li>About</li></ul></div>
-  </div>
-  <div class="text-center text-xs text-gray-500 pt-2 border-t border-gray-800">© 2024</div>
-</footer>`,
-    color: '#b7ffca'
-  },
-
-  // ========== ALERTS ==========
-  {
-    id: 11,
-    name: "Success Alert",
-    category: 'alerts',
-    description: "Success message alert",
-    code: `<div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative" role="alert">
-  <strong class="font-bold">Success!</strong>
-  <span class="block sm:inline"> Your changes have been saved.</span>
-</div>`,
-    preview: `<div class="bg-green-100 border border-green-400 text-green-700 px-3 py-2 rounded-lg text-sm">
-  <strong>Success!</strong> Changes saved.
-</div>`,
-    color: '#ffb7c5'
-  },
-  {
-    id: 12,
-    name: "Error Alert",
-    category: 'alerts',
-    description: "Error message alert",
-    code: `<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative" role="alert">
-  <strong class="font-bold">Error!</strong>
-  <span class="block sm:inline"> Something went wrong.</span>
-</div>`,
-    preview: `<div class="bg-red-100 border border-red-400 text-red-700 px-3 py-2 rounded-lg text-sm">
-  <strong>Error!</strong> Something went wrong.
-</div>`,
-    color: '#ffb7c5'
-  },
-
-  // ========== BADGES ==========
-  {
-    id: 13,
-    name: "Status Badges",
-    category: 'badges',
-    description: "Various status badges",
-    code: `<div class="flex gap-2">
-  <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Active</span>
-  <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Inactive</span>
-  <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Pending</span>
-  <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">New</span>
-</div>`,
-    preview: `<div class="flex gap-1">
-  <span class="bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full">Active</span>
-  <span class="bg-red-100 text-red-800 text-xs px-2 py-0.5 rounded-full">Inactive</span>
-  <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full">New</span>
-</div>`,
-    color: '#475569'
-  },
-
-  // ========== SIDEBARS ==========
-  {
-    id: 14,
-    name: "Simple Sidebar",
-    category: 'sidebars',
-    description: "Basic sidebar navigation",
-    code: `<div class="w-64 bg-gray-900 text-white h-screen p-4">
-  <h2 class="text-xl font-bold mb-6">Dashboard</h2>
-  <nav>
-    <ul class="space-y-2">
-      <li><a href="#" class="block px-4 py-2 rounded hover:bg-gray-800">Home</a></li>
-      <li><a href="#" class="block px-4 py-2 rounded hover:bg-gray-800">Profile</a></li>
-      <li><a href="#" class="block px-4 py-2 rounded hover:bg-gray-800">Settings</a></li>
-      <li><a href="#" class="block px-4 py-2 rounded hover:bg-gray-800">Messages</a></li>
-    </ul>
-  </nav>
-</div>`,
-    preview: `<div class="w-40 bg-gray-900 text-white p-2 rounded-lg">
-  <h3 class="font-bold text-sm mb-2">Menu</h3>
-  <div class="space-y-1 text-xs">
-    <div class="p-1 rounded hover:bg-gray-800">Home</div>
-    <div class="p-1 rounded hover:bg-gray-800">Profile</div>
-    <div class="p-1 rounded hover:bg-gray-800">Settings</div>
-  </div>
-</div>`,
-    color: '#475569'
-  },
+  
+  // ... more components can be added here
 ];
 
 // ============================================
 // CATEGORIES
 // ============================================
 const categories = [
-  { id: 'all', name: 'All Components', color: '#94a3b8' },
+  { id: 'all', name: 'All', color: '#94a3b8' },
   { id: 'buttons', name: 'Buttons', color: '#c5e6ff' },
+  { id: 'hooks', name: 'Hooks', color: '#ffb7c5' },
+  { id: 'next-api', name: 'Next.js API', color: '#b7ffca' },
   { id: 'cards', name: 'Cards', color: '#d2b7ff' },
   { id: 'forms', name: 'Forms', color: '#ffb7c5' },
-  { id: 'navbars', name: 'Navbars', color: '#b7ffca' },
-  { id: 'footers', name: 'Footers', color: '#b7ffca' },
-  { id: 'sidebars', name: 'Sidebars', color: '#475569' },
-  { id: 'alerts', name: 'Alerts', color: '#ffb7c5' },
-  { id: 'badges', name: 'Badges', color: '#475569' },
+];
+
+const frameworks: {id: Framework, name: string}[] = [
+  { id: 'html', name: 'HTML/Tailwind' },
+  { id: 'react', name: 'React' },
+  { id: 'nextjs', name: 'Next.js' },
+  { id: 'typescript', name: 'TypeScript' },
 ];
 
 // ============================================
@@ -414,6 +285,7 @@ const categories = [
 export default function ComponentsPage() {
   const [copiedId, setCopiedId] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedFramework, setSelectedFramework] = useState<Framework>('react');
   const [searchQuery, setSearchQuery] = useState('');
 
   const copyToClipboard = (text: string, id: number) => {
@@ -426,7 +298,8 @@ export default function ComponentsPage() {
     const matchesCategory = selectedCategory === 'all' || comp.category === selectedCategory;
     const matchesSearch = comp.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          comp.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
+    const hasFramework = comp.versions.some(v => v.framework === selectedFramework);
+    return matchesCategory && matchesSearch && hasFramework;
   });
 
   return (
@@ -455,107 +328,135 @@ export default function ComponentsPage() {
           />
         </div>
 
-        <div className="flex flex-wrap gap-2">
-          {categories.map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 border border-border-main hover:border-text-muted`}
-              style={{
-                backgroundColor: selectedCategory === cat.id ? cat.color : 'var(--color-card-bg)',
-                color: selectedCategory === cat.id ? '#0a0a0a' : 'var(--color-text-main)'
-              }}
-            >
-              {cat.name}
-            </button>
-          ))}
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-wrap gap-2">
+            {categories.map(cat => (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 border border-border-main hover:border-text-muted`}
+                style={{
+                  backgroundColor: selectedCategory === cat.id ? cat.color : 'var(--color-card-bg)',
+                  color: selectedCategory === cat.id ? '#0a0a0a' : 'var(--color-text-main)'
+                }}
+              >
+                {cat.name}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-3 bg-page-bg/50 p-1 rounded-xl border border-border-main w-fit">
+            {frameworks.map(fw => (
+              <button
+                key={fw.id}
+                onClick={() => setSelectedFramework(fw.id)}
+                className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                  selectedFramework === fw.id 
+                    ? 'bg-text-main text-page-bg shadow-lg' 
+                    : 'text-text-muted hover:text-text-main'
+                }`}
+              >
+                {fw.name}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* COMPONENTS GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-          {filteredComponents.map((component) => (
-            <motion.div
-              key={component.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-card-bg rounded-xl border border-border-main overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
-            >
-              {/* Header */}
-              <div 
-                className="px-4 py-3 border-b border-border-main"
-                style={{ backgroundColor: `${component.color}15` }}
+          {filteredComponents.map((component) => {
+            const currentVersion = component.versions.find(v => v.framework === selectedFramework) || component.versions[0];
+            
+            return (
+              <motion.div
+                key={component.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-card-bg rounded-xl border border-border-main overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col"
               >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="font-semibold text-text-main">{component.name}</h3>
-                    <p className="text-xs text-text-muted mt-0.5">{component.description}</p>
+                {/* Header */}
+                <div 
+                  className="px-4 py-4 border-b border-border-main"
+                  style={{ backgroundColor: `${component.color}10` }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="font-bold text-text-main leading-none">{component.name}</h3>
+                      <p className="text-[11px] text-text-muted mt-2 leading-tight">{component.description}</p>
+                    </div>
+                    <span 
+                      className="text-[10px] font-bold uppercase tracking-tighter px-2.5 py-1 rounded-full border border-black/5"
+                      style={{ backgroundColor: component.color, color: '#0a0a0a' }}
+                    >
+                      {component.category}
+                    </span>
                   </div>
-                  <span 
-                    className="text-xs px-2 py-1 rounded-full"
-                    style={{ backgroundColor: component.color, color: '#0a0a0a' }}
-                  >
-                    {component.category}
-                  </span>
                 </div>
-              </div>
 
-              {/* Preview */}
-              <div className="p-4 bg-page-bg/50 border-b border-border-main transition-colors">
-                <div className="flex items-center gap-2 mb-2">
-                  <FiEye className="text-text-muted" size={14} />
-                  <span className="text-xs font-medium text-text-secondary">PREVIEW</span>
-                </div>
-                <div className="bg-white dark:bg-slate-100 rounded-lg p-4 border border-border-main flex items-center justify-center min-h-[120px] shadow-inner transition-colors">
-                  <div dangerouslySetInnerHTML={{ __html: component.preview }} />
-                </div>
-              </div>
-
-              {/* Code */}
-              <div className="p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <FiCode className="text-text-muted" size={14} />
-                    <span className="text-xs font-medium text-text-secondary">CODE</span>
+                {/* Preview */}
+                <div className="p-4 bg-page-bg/30 border-b border-border-main min-h-[160px] flex flex-col">
+                  <div className="flex items-center gap-2 mb-4">
+                    <FiEye className="text-text-muted" size={14} />
+                    <span className="text-[10px] font-bold text-text-muted tracking-widest">VISUAL PREVIEW</span>
                   </div>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => copyToClipboard(component.code, component.id)}
-                    className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
-                    style={{
-                      backgroundColor: copiedId === component.id ? component.color : 'var(--color-page-bg)',
-                      color: copiedId === component.id ? '#0a0a0a' : 'var(--color-text-main)'
-                    }}
-                  >
-                    {copiedId === component.id ? (
-                      <><FiCheck size={14} /> Copied!</>
-                    ) : (
-                      <><FiCopy size={14} /> Copy</>
-                    )}
-                  </motion.button>
+                  <div className="flex-1 bg-white dark:bg-white rounded-xl p-6 border border-border-main flex items-center justify-center shadow-inner transition-colors">
+                    <div className="scale-90" dangerouslySetInnerHTML={{ __html: component.preview }} />
+                  </div>
                 </div>
-                <div className="bg-gray-900 rounded-lg p-3 font-mono text-xs overflow-x-auto">
-                  <pre className="text-gray-100 whitespace-pre-wrap">
-                    <code>{component.code}</code>
-                  </pre>
+
+                {/* Code Section */}
+                <div className="p-4 bg-sidebar-bg flex-1 flex flex-col">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      <FiCode className="text-text-muted" size={14} />
+                      <span className="text-[10px] font-bold text-text-muted tracking-widest">{currentVersion.label.toUpperCase()} SOURCE</span>
+                    </div>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => copyToClipboard(currentVersion.code, component.id)}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all shadow-sm"
+                      style={{
+                        backgroundColor: copiedId === component.id ? '#b7ffca' : 'rgba(255,255,255,0.05)',
+                        color: copiedId === component.id ? '#0a0a0a' : '#94a3b8',
+                        border: copiedId === component.id ? '1px solid transparent' : '1px solid rgba(255,255,255,0.1)'
+                      }}
+                    >
+                      {copiedId === component.id ? (
+                        <><FiCheck size={14} /> COPIED</>
+                      ) : (
+                        <><FiCopy size={14} /> COPY</>
+                      )}
+                    </motion.button>
+                  </div>
+                  <div className="bg-black/40 rounded-xl p-4 font-mono text-[11px] overflow-hidden border border-white/5 relative group">
+                    <pre className="text-blue-200/90 whitespace-pre-wrap overflow-y-auto max-h-[200px] scrollbar-hide">
+                      <code>{currentVersion.code}</code>
+                    </pre>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* EMPTY STATE */}
         {filteredComponents.length === 0 && (
-          <div className="text-center py-12 bg-card-bg border border-border-main rounded-xl transition-colors">
-            <FiBox className="mx-auto text-text-muted mb-3" size={48} />
-            <h3 className="text-lg font-medium text-text-main">No components found</h3>
-            <p className="text-sm text-text-muted">Try a different category or search term</p>
+          <div className="text-center py-20 bg-card-bg border border-border-main rounded-2xl transition-all shadow-inner">
+            <div className="bg-border-main/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <FiBox className="text-text-muted" size={32} />
+            </div>
+            <h3 className="text-xl font-bold text-text-main mb-2">No results matching filters</h3>
+            <p className="text-sm text-text-muted max-w-xs mx-auto">Try selecting a different framework or category to see more components.</p>
           </div>
         )}
 
         {/* FOOTER NOTE */}
-        <div className="text-center py-6 text-sm text-text-muted border-t border-border-main transition-colors">
-          <p>✨ {filteredComponents.length} components ready to copy • Built with Tailwind CSS</p>
+        <div className="text-center py-10 opacity-50">
+          <div className="h-px bg-gradient-to-r from-transparent via-border-main to-transparent mb-6" />
+          <p className="text-[11px] font-bold tracking-[0.2em] uppercase">
+            🚀 Built for {frameworks.map(f => f.name).join(' • ')}
+          </p>
         </div>
       </div>
     </DashboardLayout>
