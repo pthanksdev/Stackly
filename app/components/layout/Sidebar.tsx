@@ -245,13 +245,13 @@ export default function Sidebar() {
         variants={sidebarVariants}
         initial={false}
         animate={isOpen ? "open" : "closed"}
-        className="fixed md:relative h-screen bg-sidebar-bg text-text-main flex flex-col overflow-hidden z-50 transition-colors duration-300"
+        className="fixed md:relative h-screen bg-sidebar-bg/80 backdrop-blur-xl text-text-main flex flex-col overflow-hidden z-50 border-r border-border-main/50"
         style={{
-          boxShadow: isMobile && isOpen ? "0 0 20px rgba(0,0,0,0.5)" : "none",
+          boxShadow: isMobile && isOpen ? "0 0 40px rgba(0,0,0,0.5)" : "none",
         }}
       >
         {/* Sidebar Header */}
-        <div className="flex items-center justify-between p-4 md:p-6 min-h-[72px]">
+        <div className="flex items-center justify-between px-6 h-20 border-b border-border-main/10 flex-shrink-0">
           {isOpen ? (
             <div className="flex items-center gap-3">
               <div
@@ -286,17 +286,29 @@ export default function Sidebar() {
         {/* Navigation Items */}
         <nav className="flex-1 px-2 md:px-4 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           <ul className="space-y-1 md:space-y-2 pb-4">
-            {navItems.map((item) => {
+            {navItems.map((item, index) => {
               const isActive = pathname === item.path;
+              const isFirstCourse = item.path === "/dashboard/html";
+              const isFirstInTools = item.path === "/dashboard/playground";
 
               return (
                 <li
                   key={item.path}
                   onClick={isMobile ? closeSidebar : undefined}
                 >
+                  {isOpen && isFirstCourse && (
+                    <p className="px-5 text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2 mt-4">
+                      Learning Paths
+                    </p>
+                  )}
+                  {isOpen && isFirstInTools && (
+                    <p className="px-5 text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2 mt-6">
+                      Developer Tools
+                    </p>
+                  )}
                   <Link href={item.path} scroll={false}>
                     <div
-                      className="relative flex items-center gap-4 px-3 md:px-4 py-3 rounded-xl cursor-pointer transition-colors duration-200"
+                      className={`relative flex items-center ${isOpen ? "px-4" : "justify-center"} py-2.5 mx-2 rounded-xl cursor-pointer transition-all duration-200 group`}
                       onMouseEnter={() =>
                         !isMobile && setHoveredItem(item.path)
                       }
@@ -311,40 +323,50 @@ export default function Sidebar() {
                     >
                       {/* Active Indicator */}
                       {isActive && (
-                        <div
-                          className="absolute left-0 w-1 h-8 rounded-r-full"
+                        <motion.div
+                          layoutId="activeIndicator"
+                          className="absolute left-0 w-1 h-6 rounded-r-full"
                           style={{ backgroundColor: item.color }}
                         />
                       )}
 
                       {/* Icon Container */}
                       <div
-                        className="relative p-2 rounded-lg transition-colors duration-300"
+                        className="relative p-2 rounded-lg transition-all duration-300 flex items-center justify-center"
                         style={{
                           backgroundColor: isActive
-                            ? `${item.color}30`
+                            ? `${item.color}25`
                             : hoveredItem === item.path
-                              ? `${item.color}20`
+                              ? `${item.color}15`
                               : "transparent",
+                          color: isActive ? item.color : "#94a3b8"
                         }}
                       >
-                        <div
-                          style={{ color: isActive ? item.color : "#94a3b8" }}
-                        >
-                          {item.icon}
-                        </div>
+                        {item.icon}
                       </div>
 
                       {/* Label */}
-                      {isOpen && (
-                        <span
-                          className="text-sm font-medium truncate"
-                          style={{
-                            color: isActive ? (isMobile ? "#fff" : "inherit") : "var(--color-text-muted)",
-                          }}
-                        >
+                      <AnimatePresence mode="wait">
+                        {isOpen && (
+                          <motion.span
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -10 }}
+                            className="ml-3 text-sm font-medium truncate whitespace-nowrap"
+                            style={{
+                              color: isActive ? "#fff" : "#94a3b8",
+                            }}
+                          >
+                            {item.name}
+                          </motion.span>
+                        )}
+                      </AnimatePresence>
+
+                      {/* Tooltip for collapsed state */}
+                      {!isOpen && !isMobile && hoveredItem === item.path && (
+                        <div className="fixed left-20 px-3 py-2 bg-slate-800 text-white text-xs rounded-md shadow-xl border border-slate-700 pointer-events-none z-[100] whitespace-nowrap">
                           {item.name}
-                        </span>
+                        </div>
                       )}
                     </div>
                   </Link>
